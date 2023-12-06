@@ -35,4 +35,3 @@ package() {
   rm -r "${pkgdir}/usr/share/veracrypt"
   rm -r "${pkgdir}/usr/share/doc"
 }
-
