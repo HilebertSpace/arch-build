@@ -9,7 +9,7 @@ jobs:
   buildAUR:
     strategy:
       matrix:
-        repos: [powershell]
+        repos: [adduser-deb， powershell]
 
       fail-fast: false
       
