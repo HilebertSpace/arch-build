@@ -10,9 +10,6 @@ jobs:
     strategy:
       matrix:
         repos: [adduser-deb, powershell-bin]
-        include:
-          - repos: adduser-deb
-            preinstall-pkgs: "po4a"
 
       fail-fast: false
       
