@@ -16,7 +16,7 @@ optdepends=('sudo: mounting encrypted volumes as nonroot users' 'pcsclite: provi
 source=(https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz
         select_lang.sh)
 sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
-            '940d5150b2b6d89718fbbd61b7ed80c956c56ee2f2b638fd16d6757ec2afbe5d6dab5f3acb0a9534de64223a5ad15b960e4b0a61896fc4a18aa8f627b5898605')
+            '350c3d0f7c9527210d3ffc375bf19ffc01e2c9bae133f1932fd3f9052ddd038fa0dc808efca349cdd53d607fd402940310be3a0022b281d9288d05eba1e2079a')
 
 prepare() {
   bash $srcdir/../select_lang.sh
