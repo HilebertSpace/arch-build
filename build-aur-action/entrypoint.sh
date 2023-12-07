@@ -21,7 +21,7 @@ fi
 sudo --set-home -u builder PATH="/usr/bin/vendor_perl:$PATH" paru -S --noconfirm --clonedir=./ "$pkgname"
 
 pacman -S --noconfirm --needed namcap
-namcap "./$pkgname/PKGBUILD"
+namcap "./$pkgname/PKGBUILD" | prepend "::warning file=$FILE,line=$LINENO::"
 
 cd "./$pkgname" || exit 1
 python3 ../build-aur-action/encode_name.py
