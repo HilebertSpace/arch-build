@@ -2,6 +2,8 @@
 
 pkgname=$1
 
+FILE="$(basename "$0")"
+
 useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
@@ -21,7 +23,7 @@ fi
 sudo --set-home -u builder PATH="/usr/bin/vendor_perl:$PATH" paru -S --noconfirm --clonedir=./ "$pkgname"
 
 pacman -S --noconfirm --needed namcap
-namcap "./$pkgname/PKGBUILD"
+namcap "./$pkgname/PKGBUILD" | echo "::warning file=$FILE,line=$LINENO::"
 
 cd "./$pkgname" || exit 1
 python3 ../build-aur-action/encode_name.py
