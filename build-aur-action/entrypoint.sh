@@ -22,8 +22,15 @@ fi
 
 sudo --set-home -u builder PATH="/usr/bin/vendor_perl:$PATH" paru -S --noconfirm --clonedir=./ "$pkgname"
 
+function prepend () {
+	# Prepend the argument to each input line
+	while read -r line; do
+		echo "$1$line"
+	done
+}
+
 pacman -S --noconfirm --needed namcap
-namcap "./$pkgname/PKGBUILD" | echo "::warning file=$FILE::"
+namcap "./$pkgname/PKGBUILD" | prepend "::warning file=$FILE,line=$LINENO::"
 
 cd "./$pkgname" || exit 1
 python3 ../build-aur-action/encode_name.py
