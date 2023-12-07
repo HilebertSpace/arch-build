@@ -3,6 +3,11 @@ set -euo pipefail
 
 FILE="$(basename "$0")"
 
+# set locales
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+locale-gen en_US.UTF-8
+
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
 [multilib]
