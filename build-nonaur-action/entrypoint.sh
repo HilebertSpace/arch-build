@@ -46,6 +46,7 @@ function recursive_build () {
 	sudo -u builder makepkg --printsrcinfo > .SRCINFO
 	mapfile -t OTHERPKGDEPS < \
 		<(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
+  	echo "${OTHERPKGDEPS[@]}"
 	sudo -H -u builder PATH="/usr/bin/vendor_perl:$PATH" paru --sync --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
 	
 	sudo -H -u builder makepkg --install --noconfirm
