@@ -39,7 +39,7 @@ jobs:
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [ion-git, upd72020-fw, veracrypt-inyourlanguage]
+        PKGBUILDs: [ion-git, upd72020x-fw, veracrypt-inyourlanguage]
 
       fail-fast: false
       
