@@ -28,7 +28,6 @@ prepare() {
 build() {
   cd "$_pkgname"
   cargo build --workspace --frozen --release
-
 }
 
 check() {
