@@ -23,12 +23,12 @@ build() {
 }
 
 check() {
-    cd $pkgname-$pkgver
+    cd $_pkgname-$pkgver
     cargo test --frozen --all-features
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   find target/release -maxdepth 1 -executable -type f -exec install -Dm 755 -t "$pkgdir/usr/bin/" {} +
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
