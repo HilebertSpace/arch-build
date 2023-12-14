@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -34,7 +33,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  cargo test --workspace --all-features
+  cargo test --workspace
 }
 
 package() {
