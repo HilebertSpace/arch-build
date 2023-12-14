@@ -33,7 +33,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  DEBUG=1 RUSTUP=0 VENDORED=1 make tests
+  DEBUG=1 RUSTUP=0 make tests
 }
 
 package() {
