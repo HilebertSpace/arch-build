@@ -38,8 +38,8 @@ check() {
 
 package() {
   cd "$_pkgname"
-  mkdir -p "$pkgdir"/usr/{bin,share/doc/$_pkgname}
-  DESTDIR="$pkgdir/usr/bin" bash/install.sh
+  install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -dm 755 "$pkgdir/share/doc/$_pkgname"
   cp -r manual "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
