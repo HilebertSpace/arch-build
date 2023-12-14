@@ -29,6 +29,7 @@ check() {
 
 package() {
   cd "$_pkgname-$pkgver"
-  install -Dm755 target/release/{find,xargs} "$pkgdir"/usr/bin/uu-{find,xargs}
+  install -Dm755 "target/release/find" "$pkgdir/usr/bin/uu-find"
+  install -Dm755 "target/release/xargs" "$pkgdir/usr/bin/uu-xargs"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
