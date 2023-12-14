@@ -34,7 +34,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  cargo test --frozen
+  cargo test --workspace --all-features
 }
 
 package() {
