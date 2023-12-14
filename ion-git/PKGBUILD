@@ -33,7 +33,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  cargo test --workspace
+  DEBUG=1 RUSTUP=0 VENDORED=1 make tests
 }
 
 package() {
