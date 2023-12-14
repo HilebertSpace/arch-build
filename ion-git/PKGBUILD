@@ -12,7 +12,7 @@ makedepends=('git' 'rust')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=ion-git.install
-source=('git+https://gitlab.redox-os.org/redox-os/ion.git')
+source=('git+$url.git')
 sha512sums=('SKIP')
 
 pkgver() {
