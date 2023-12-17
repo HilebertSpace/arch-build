@@ -36,8 +36,12 @@ optdepends=(
   'sudo: mounting encrypted volumes as nonroot users'
   'pcsclite: providing support for smartcards'
 )
-source=("https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz")
-sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd')
+source=(
+  "https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz"
+)
+sha512sums=(
+  'c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
+)
 
 build() {
   cd "${_pkgname}_${pkgver}/src"
