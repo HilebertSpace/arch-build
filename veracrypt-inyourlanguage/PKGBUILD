@@ -42,11 +42,11 @@ optdepends=(
   'sudo: mounting encrypted volumes as nonroot users'
   'pcsclite: providing support for smartcards'
 )
-source=("https://launchpad.net/veracrypt/trunk/${pkgver}/+download/${_pkgname}_${pkgver}_Source.tar.bz2")
-sha512sums=('b541f6e80012099ed83f75ddb68e9454e96953435ed4fccba0cbd26ec7dc05140c4722ef6b37b00d71af1ec992588e374e52b04b30e0844850f7e550a311dec7')
+source=("https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz")
+sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd')
 
 build() {
-  cd "${_pkgname}_${pkgver}_Source/src"
+  cd "${_pkgname}_${pkgver}/src"
   make PKG_CONFIG_PATH='/usr/lib/pkgconfig' \
        WX_CONFIG='/usr/bin/wx-config' \
        TC_EXTRA_LFLAGS="${TC_EXTRA_LFLAGS} -ldl ${LDFLAGS}" \
@@ -55,7 +55,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}_${pkgver}_Source/src"
+  cd "${_pkgname}_${pkgver}/src"
   make DESTDIR="${pkgdir}" install
   install -Dm 644 License.txt -t "${pkgdir}/usr/share/licenses/veracrypt"
   rm "${pkgdir}/usr/bin/veracrypt-uninstall.sh"
