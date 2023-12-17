@@ -41,7 +41,7 @@ package() {
   install -Dm 755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   find manual/builtins -maxdepth 1 -name '*.1' -type f -exec install -Dm 644 -t "${pkgdir}/usr/share/${_pkgname}/man/man1" {} +
-  rm -r manual/builtins
   install -dm 755 "${pkgdir}/usr/share/doc/${_pkgname}"
   cp -r manual "${pkgdir}/usr/share/doc/${_pkgname}"
+  rm -r "${pkgdir}/usr/share/doc/${_pkgname}/manual/builtins"
 }
