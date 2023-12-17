@@ -44,7 +44,7 @@ optdepends=(
 )
 source=("https://launchpad.net/veracrypt/trunk/${pkgver}/+download/VeraCrypt_${pkgver}_Source.tar.bz2"{,.sig})
 sha512sums=(
-  'c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
+  'b541f6e80012099ed83f75ddb68e9454e96953435ed4fccba0cbd26ec7dc05140c4722ef6b37b00d71af1ec992588e374e52b04b30e0844850f7e550a311dec7'
   '2cef9ccf24fdb032a3867bbad73576ed213c589a23e1e24e5e7ad7e9e6ade8c48a320b02e31c95b484701ba20e551583b60f14a8c6e2c930b9dbfda215d5ed7b'
 )
 validpgpkeys=('5069A233D55A0EEB174A5FC3821ACD02680D16DE') # VeraCrypt Team <veracrypt@idrix.fr>
