@@ -19,7 +19,7 @@ sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec
             '389fa866b54585a554c30b34f59ef5e45d62fdfbd83f2c094aeb2dd2ba9bc36eb3b39e8ff17604c26d4dadd668ce0484aecfa46c2b44b68c90a7420c4a7e1665')
 
 prepare() {
-  bash '../select_lang.sh'
+  bash "$srcdir/../select_lang.sh"
 }
 
 build() {
