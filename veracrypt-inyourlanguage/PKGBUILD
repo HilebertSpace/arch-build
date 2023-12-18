@@ -43,7 +43,7 @@ build() {
   cd "${_pkgname}_${pkgver}/src"
   make PKG_CONFIG_PATH='/usr/lib/pkgconfig' \
        WX_CONFIG='/usr/bin/wx-config' \
-       TC_EXTRA_LFLAGS="-ldl ${LDFLAGS}" \
+       TC_EXTRA_LFLAGS="${LDFLAGS}" \
        TC_EXTRA_CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}" \
        TC_EXTRA_CFLAGS="${CFLAGS} ${CPPFLAGS}"
 }
