@@ -47,7 +47,7 @@ package() {
         -exec install -Dm 644 -t "${pkgdir}/usr/share/${_pkgname}/man/man1" {} +
   find manual \
         -type d \
-        -exec install -dm 755 -t "${pkgdir}/usr/share/doc/${_pkgname}" {} +
+        -exec install -dm 755 "${pkgdir}/usr/share/doc/${_pkgname}" {} +
   find manual \
         -type f \
         -exec install -Dm 644 -t "${pkgdir}/usr/share/doc/${_pkgname}" {} +
