@@ -34,7 +34,6 @@ jobs:
           - ripgrep-all-git
           - rustic-rs
           - swt
-          - vrms-arch-git
         include:
           - repos: ripgrep-all-git
             preinstall-pkgs: "poppler"
@@ -70,7 +69,6 @@ jobs:
         PKGBUILDs:
           - ion-git
           - java-openjfx
-          - veracrypt-inyourlanguage
 
       fail-fast: false
       
