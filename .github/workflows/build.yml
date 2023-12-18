@@ -23,7 +23,7 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
-          - kopia
+          - java-openjfx
           - memstrack
           - mpris-proxy-service
           - networkd-broker
@@ -68,7 +68,6 @@ jobs:
       matrix:
         PKGBUILDs:
           - ion-git
-          - java-openjfx
 
       fail-fast: false
       
