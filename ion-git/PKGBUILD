@@ -50,6 +50,6 @@ package() {
         -exec install -dm 755 "${pkgdir}/usr/share/doc/${_pkgname}" {} +
   find manual \
         -type f \
-        -exec install -Dm 644 -t "${pkgdir}/usr/share/doc/${_pkgname}" {} +
+        -exec install -Dm 644 -t "${pkgdir}/usr/share/doc/${_pkgname}/manual" {} +
   rm -r "${pkgdir}/usr/share/doc/${_pkgname}/manual/builtins"
 }
