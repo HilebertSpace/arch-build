@@ -44,9 +44,9 @@ package() {
         -maxdepth 1 \
         -name '*.1' \
         -type f \
-        -exec install -vDm 644 -t "${pkgdir}/usr/share/${_pkgname}/man/man1" {} +
+        -exec install -Dm 644 -t "${pkgdir}/usr/share/${_pkgname}/man/man1" "{}" +
   find manual \
         -type f \
-        -exec install -vDm 644 -t "${pkgdir}/usr/share/doc/${_pkgname}" {} +
+        -exec install -Dm 755 -t "${pkgdir}/usr/share/doc/${_pkgname}" "{}" \;
   rm -r "${pkgdir}/usr/share/doc/${_pkgname}/manual/builtins"
 }
