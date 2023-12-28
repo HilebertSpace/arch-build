@@ -7,7 +7,7 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
 
 # Enable the cloudflare mirror
-sed -i '1s/^/Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch\n/' /etc/pacman.d/mirrorlist
+sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
