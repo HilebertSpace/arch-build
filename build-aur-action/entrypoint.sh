@@ -38,6 +38,13 @@ sudo --set-home -u builder PATH="/usr/bin/vendor_perl:$PATH" paru -S --noconfirm
 cd "./$pkgname" || exit 1
 python3 ../build-aur-action/encode_name.py
 
+function prepend () {
+    # Prepend the argument to each input line
+    while read -r line; do
+        echo "$1$line"
+    done
+}
+
 pacman -S --noconfirm --needed namcap
 # For reasons that I don't understand, sudo is not resetting '$PATH'
 # As a result, namcap finds program paths in /usr/sbin instead of /usr/bin
@@ -47,4 +54,4 @@ pacman -S --noconfirm --needed namcap
 #
 # Work around this issue by putting bin ahead of sbin in $PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-namcap PKGBUILD | echo "::warning file=$pkgname PKGBUILD,line=$LINENO::"
+namcap PKGBUILD | prepend "::warning file=$pkgname PKGBUILD,line=$LINENO::"

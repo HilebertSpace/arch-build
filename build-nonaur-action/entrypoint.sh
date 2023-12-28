@@ -49,7 +49,7 @@ if ! [ -f .SRCINFO ]; then
 fi
 
 function recursive_build () {
-	for d in *; do
+    for d in *; do
         if [ -d "$d" ]; then
             (cd -- "$d" && recursive_build)
         fi
