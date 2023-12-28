@@ -9,6 +9,15 @@ chmod -R a+rw .
 cat << EOM >> /etc/pacman.conf
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/x86_64
+Server = https://mirrors.xtom.hk/archlinuxcn/x86_64
+Server = https://mirrors.xtom.us/archlinuxcn/x86_64
+Server = https://mirrors.xtom.nl/archlinuxcn/x86_64
+Server = https://mirrors.xtom.de/archlinuxcn/x86_64
+Server = https://mirrors.xtom.ee/archlinuxcn/x86_64
+Server = https://mirrors.xtom.jp/archlinuxcn/x86_64
+Server = https://mirrors.xtom.au/archlinuxcn/x86_64
+Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/x86_64
+Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/x86_64
 EOM
 
 pacman-key --init
