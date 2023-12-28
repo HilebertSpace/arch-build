@@ -16,36 +16,35 @@ source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_pkgname}"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "${_pkgname}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_pkgname}"
-  cargo build --frozen --release
-  make manual
+    cd "${_pkgname}"
+    cargo build --frozen --release
+    make manual
 }
 
 check() {
-  cd "${_pkgname}"
-  DEBUG=1 RUSTUP=0 make tests
+    cd "${_pkgname}"
+    DEBUG=1 RUSTUP=0 make tests
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm 755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-  find manual/builtins \
-        -maxdepth 1 \
-        -name '*.1' \
-        -type f \
-        -execdir install -Dm 644 -t "${pkgdir}/usr/share/${_pkgname}/man/man1" "{}" +
-  install -dm 755 "$pkgdir/usr/share/doc/$_pkgname"
-  cp -r manual "$pkgdir/usr/share/doc/$_pkgname"
-  rm -r "${pkgdir}/usr/share/doc/${_pkgname}/manual/builtins"
+    cd "${_pkgname}"
+    install -Dm 755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    find manual/builtins \
+         -maxdepth 1 \
+         -name '*.1' \
+         -type f \
+         -execdir install -Dm 644 -t "${pkgdir}/usr/share/${_pkgname}/man/man1" "{}" +
+    cp -r manual "$pkgdir/usr/share/doc/$_pkgname"
+    rm -r "${pkgdir}/usr/share/doc/${_pkgname}/manual/builtins"
 }
