@@ -8,6 +8,7 @@ chmod -R a+rw .
 
 # Enable the cloudflare mirror
 sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
+cat /etc/pacman.d/mirrorlist
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
