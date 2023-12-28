@@ -16,7 +16,7 @@ pkgrel='1'
 pkgdesc='Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version'
 arch=('x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
-license=('custom')
+license=('GPL-2.0-or-later WITH Classpath-exception-2.0')
 makedepends=(
     'alsa-lib'
     'ant'
@@ -92,7 +92,7 @@ package_java-openjfx-doc() {
     install -dm 755 "${pkgdir}/usr/share/doc"
     install -dm 755 "${pkgdir}/usr/share/licenses"
     cp -dr --no-preserve=ownership 'build/javadoc' "${pkgdir}/usr/share/doc/java-openjfx"
-    ln -s 'java-openjfx' "${pkgdir}/usr/share/licenses/java-openjfx-doc"
+    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/java-openjfx-doc"
 }
 
 package_java-openjfx-src() {
@@ -100,5 +100,5 @@ package_java-openjfx-src() {
     install -dm 755 "${pkgdir}/usr/lib/jvm/java-${pkgver%%.*}-openjdk"
     install -dm 755 "${pkgdir}/usr/share/licenses"
     install -m 644 'build/sdk/src.zip' "${pkgdir}/usr/lib/jvm/java-${pkgver%%.*}-openjdk/javafx-src.zip"
-    ln -s 'java-openjfx' "${pkgdir}/usr/share/licenses/java-openjfx-src"
+    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/java-openjfx-src"
 }
