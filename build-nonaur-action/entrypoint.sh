@@ -9,6 +9,15 @@ cat << EOM >> /etc/pacman.conf
 Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/x86_64
+Server = https://mirrors.xtom.hk/archlinuxcn/x86_64
+Server = https://mirrors.xtom.us/archlinuxcn/x86_64
+Server = https://mirrors.xtom.nl/archlinuxcn/x86_64
+Server = https://mirrors.xtom.de/archlinuxcn/x86_64
+Server = https://mirrors.xtom.ee/archlinuxcn/x86_64
+Server = https://mirrors.xtom.jp/archlinuxcn/x86_64
+Server = https://mirrors.xtom.au/archlinuxcn/x86_64
+Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/x86_64
+Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/x86_64
 EOM
 
 pacman-key --init
@@ -42,12 +51,12 @@ function recursive_build () {
 			(cd -- "$d" && recursive_build)
 		fi
 	done
-	
+
 	sudo -u builder makepkg --printsrcinfo > .SRCINFO
 	mapfile -t OTHERPKGDEPS < \
 		<(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
 	sudo -H -u builder PATH="/usr/bin/vendor_perl:$PATH" paru --sync --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
-	
+
 	sudo -H -u builder makepkg --install --noconfirm
 	[ -d "$BASEDIR/local/" ] || mkdir "$BASEDIR/local/"
 	cp ./*.pkg.tar.zst "$BASEDIR/local/"
@@ -58,7 +67,7 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
 	# Extract dependencies from .SRCINFO (depends or depends_x86_64) and install
 	mapfile -t PKGDEPS < \
 		<(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
-	
+
 	# If package have dependencies from AUR and we want to use our PKGBUILD of these dependencies
 	CURDIR="$PWD"
 	for d in *; do
@@ -67,7 +76,7 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
 		fi
 	done
 	cd "$CURDIR"
-	
+
 	sudo -H -u builder PATH="/usr/bin/vendor_perl:$PATH" paru --sync --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
 fi
 
