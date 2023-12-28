@@ -6,18 +6,24 @@ useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
 
+# Enable the cloudflare mirror
+sed -i '1s/^/Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch\n/' /etc/pacman.d/mirrorlist
+
+# Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
-Server = https://repo.archlinuxcn.org/x86_64
-Server = https://mirrors.xtom.hk/archlinuxcn/x86_64
-Server = https://mirrors.xtom.us/archlinuxcn/x86_64
-Server = https://mirrors.xtom.nl/archlinuxcn/x86_64
-Server = https://mirrors.xtom.de/archlinuxcn/x86_64
-Server = https://mirrors.xtom.ee/archlinuxcn/x86_64
-Server = https://mirrors.xtom.jp/archlinuxcn/x86_64
-Server = https://mirrors.xtom.au/archlinuxcn/x86_64
-Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/x86_64
-Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/x86_64
+Server = https://repo.archlinuxcn.org/$arch
+Server = https://mirrors.xtom.hk/archlinuxcn/$arch
+Server = https://mirrors.xtom.us/archlinuxcn/$arch
+Server = https://mirrors.xtom.nl/archlinuxcn/$arch
+Server = https://mirrors.xtom.de/archlinuxcn/$arch
+Server = https://mirrors.xtom.ee/archlinuxcn/$arch
+Server = https://mirrors.xtom.jp/archlinuxcn/$arch
+Server = https://mirrors.xtom.au/archlinuxcn/$arch
+Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/$arch
+Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/$arch
 EOM
 
 pacman-key --init
