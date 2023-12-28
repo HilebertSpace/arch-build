@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+FILE="$(basename "$0")"
 pkgname=$1
 
 useradd builder -m
@@ -54,4 +55,4 @@ pacman -S --noconfirm --needed namcap
 #
 # Work around this issue by putting bin ahead of sbin in $PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-namcap PKGBUILD | prepend "::warning file=$pkgname PKGBUILD,line=$LINENO::"
+namcap PKGBUILD | prepend "::warning file=$FILE,line=$LINENO::"
