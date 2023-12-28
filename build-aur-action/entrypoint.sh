@@ -14,16 +14,16 @@ cat << EOM >> /etc/pacman.conf
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
-Server = https://repo.archlinuxcn.org/$arch
-Server = https://mirrors.xtom.hk/archlinuxcn/$arch
-Server = https://mirrors.xtom.us/archlinuxcn/$arch
-Server = https://mirrors.xtom.nl/archlinuxcn/$arch
-Server = https://mirrors.xtom.de/archlinuxcn/$arch
-Server = https://mirrors.xtom.ee/archlinuxcn/$arch
-Server = https://mirrors.xtom.jp/archlinuxcn/$arch
-Server = https://mirrors.xtom.au/archlinuxcn/$arch
-Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/$arch
-Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/$arch
+Server = https://repo.archlinuxcn.org/x86_64
+Server = https://mirrors.xtom.us/archlinuxcn/x86_64
+Server = https://mirrors.xtom.jp/archlinuxcn/x86_64
+Server = https://mirrors.xtom.hk/archlinuxcn/x86_64
+Server = https://mirrors.xtom.nl/archlinuxcn/x86_64
+Server = https://mirrors.xtom.de/archlinuxcn/x86_64
+Server = https://mirrors.xtom.ee/archlinuxcn/x86_64
+Server = https://mirrors.xtom.au/archlinuxcn/x86_64
+Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/x86_64
+Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/x86_64
 EOM
 
 pacman-key --init
