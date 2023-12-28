@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 pkgname=$1
 
@@ -36,3 +37,14 @@ fi
 sudo --set-home -u builder PATH="/usr/bin/vendor_perl:$PATH" paru -S --noconfirm --clonedir=./ "$pkgname"
 cd "./$pkgname" || exit 1
 python3 ../build-aur-action/encode_name.py
+
+pacman -S --noconfirm --needed namcap
+# For reasons that I don't understand, sudo is not resetting '$PATH'
+# As a result, namcap finds program paths in /usr/sbin instead of /usr/bin
+# which makes namcap fail to identify the packages that provide the
+# program and so it emits spurious warnings.
+# More details: https://bugs.archlinux.org/task/66430
+#
+# Work around this issue by putting bin ahead of sbin in $PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+namcap PKGBUILD | prepend "::warning file=$pkgnme PKGBUILD,line=$LINENO::"
