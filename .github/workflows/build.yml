@@ -13,7 +13,7 @@ jobs:
           - adduser-deb
           - alist
           - carapace
-          - clash-verge-rev-bin
+          - clash-verge
           - davmail
           - doggo
           - dracut-git
