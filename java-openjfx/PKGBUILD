@@ -16,7 +16,7 @@ pkgrel='1'
 pkgdesc='Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version'
 arch=('x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
-license=('GPL-2.0-or-later WITH Classpath-exception-2.0')
+license=('GPL-2.0-only WITH Classpath-exception-2.0')
 makedepends=(
     'alsa-lib'
     'ant'
