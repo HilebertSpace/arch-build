@@ -30,7 +30,6 @@ jobs:
           - paccache-hook
           - playerctld-systemd-unit
           - ripgrep-all-git
-          - rustic-rs
           - swt
           - watchman
         include:
@@ -68,6 +67,7 @@ jobs:
         PKGBUILDs:
           - ion-git
           - java-openjfx
+          - rustic-rs
           - veracrypt-updated
 
       fail-fast: false
