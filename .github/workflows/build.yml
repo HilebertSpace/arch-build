@@ -28,7 +28,6 @@ jobs:
           - networkd-broker
           - networkd-notify-git
           - paccache-hook
-          - pacman-hook-kernel-install
           - playerctld-systemd-unit
           - ripgrep-all-git
           - rustic-rs
