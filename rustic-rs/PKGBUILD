@@ -34,5 +34,5 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm 755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
     "target/release/${_pkgname}" completions bash | \
-    install -Dm 644 - "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+    install -Dm 644 -T "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 }
