@@ -21,7 +21,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build #-ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
+    go build -buildvcs=false -ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
 }
 
 check() {
