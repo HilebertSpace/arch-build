@@ -10,7 +10,7 @@
 # Contributor: Olli <olli at coderkun dot de>
 
 pkgbase='java-openjfx'
-pkgname=("${pkgname}" "${pkgname}-doc" "${pkgname}-src")
+pkgname=("${pkgbase}" "${pkgbase}-doc" "${pkgbase}-src")
 pkgver='21.0.1.u6'
 pkgrel='1'
 pkgdesc='Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version'
