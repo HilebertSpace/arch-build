@@ -74,7 +74,7 @@ build() {
     gradle zips
 }
 
-package_java-openjfx() {
+"package_${pkgbase}"() {
     depends=("java-runtime-openjdk=${pkgver%%.*}" 'libgl' 'libx11' 'libxtst')
     optdepends=('ffmpeg4.4: Media support', 'gtk2: GTK2 support', 'gtk3: GTK3 support', 'webkit2gtk: Web support')
     provides=("${pkgname}=${pkgver%%.*}")
