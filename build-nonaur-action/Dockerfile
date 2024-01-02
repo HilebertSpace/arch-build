@@ -5,8 +5,8 @@ RUN date
 RUN pacman-key --init
 RUN pacman -Syu --noconfirm
 RUN pacman -S base-devel git python --noconfirm
-COPY gitconfig /etc/gitconfig
 
+COPY gitconfig /etc/gitconfig
 COPY entrypoint.sh /entrypoint.sh
 
 USER root
