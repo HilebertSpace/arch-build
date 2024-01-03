@@ -28,7 +28,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -o 'dist/kopia-ui/kopia_linux_x64' -ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
+    go build -o 'dist/kopia_linux_x64' -ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
     npm --prefix app run build-electron -- --linux --x64 --dir -c.electronDist='/usr/lib/electron' -c.electronVersion="$(</usr/lib/electron/version)"
 }
 
