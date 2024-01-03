@@ -11,6 +11,7 @@ url="https://${_pkgname}.io"
 license=('APACHE')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+depends=('electron' 'nodejs')
 optdepends=('fuse3: Needed to mount Kopia snapshots on local filesystem')
 makedepends=('go')
 checkdepends=('openssh' 'inetutils')
