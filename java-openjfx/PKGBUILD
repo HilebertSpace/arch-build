@@ -46,8 +46,8 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
     'gradle.properties'
-    "${pkgbase}-flags.patch"
-    "${pkgbase}-no-xlocale.patch"
+    "${pkgname}-flags.patch"
+    "${pkgname}-no-xlocale.patch"
 )
 b2sums=(
     '70d231f1277393798a4478c34bb6d876459c1316b101d67ec9d2ee62e4131049367217d5a4ee8387d759e35154830f503f7e228ad2d2ea4c479eac4a261257e3'
@@ -60,8 +60,8 @@ _jfxdir="jfx${pkgver%%.*}u-${pkgver//.u/-}"
 prepare() {
     cd "${_jfxdir}"
     ln -sf '../gradle.properties' '.'
-    patch -Np1 -i "../${pkgbase}-flags.patch"
-    patch -Np1 -i "../${pkgbase}-no-xlocale.patch"
+    patch -Np1 -i "../${pkgname}-flags.patch"
+    patch -Np1 -i "../${pkgname}-no-xlocale.patch"
     sed 's|, "-Werror"||g' -i 'buildSrc/linux.gradle'
 }
 
