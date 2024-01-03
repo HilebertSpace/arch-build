@@ -84,7 +84,7 @@ package_java-openjfx() {
     install -dm 755 "${pkgdir}/usr/share/licenses"
     cp -dr --no-preserve=ownership 'build/sdk/lib' "${pkgdir}/usr/lib/jvm/java-${pkgver%%.*}-openjdk"
     cp -dr --no-preserve=ownership 'build/jmods' "${pkgdir}/usr/lib/jvm/java-${pkgver%%.*}-openjdk"
-    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/${pkgbase}"
+    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_java-openjfx-doc() {
@@ -92,7 +92,7 @@ package_java-openjfx-doc() {
     install -dm 755 "${pkgdir}/usr/share/doc"
     install -dm 755 "${pkgdir}/usr/share/licenses"
     cp -dr --no-preserve=ownership 'build/javadoc' "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/${pkgbase}-doc"
+    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_java-openjfx-src() {
@@ -100,5 +100,5 @@ package_java-openjfx-src() {
     install -dm 755 "${pkgdir}/usr/lib/jvm/java-${pkgver%%.*}-openjdk"
     install -dm 755 "${pkgdir}/usr/share/licenses"
     install -m 644 'build/sdk/src.zip' "${pkgdir}/usr/lib/jvm/java-${pkgver%%.*}-openjdk/javafx-src.zip"
-    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/${pkgbase}-src"
+    cp -dr --no-preserve=ownership 'build/sdk/legal' "${pkgdir}/usr/share/licenses/${pkgname}"
 }
