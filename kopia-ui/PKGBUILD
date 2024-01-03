@@ -10,11 +10,19 @@ arch=('x86_64')
 url="https://${_pkgname}.io"
 license=('APACHE')
 depends=('electron' 'nodejs')
-makedepends=('go' 'npm')
+makedepends=('asar' 'go' 'npm')
 optdepends=('fuse3: Needed to mount Kopia snapshots on local filesystem')
 checkdepends=('openssh' 'inetutils')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7000f6999ea8d1975645293c3f4f3ba25583ba13d3095aef3cf274251b36b75f')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    'kopia-ui'
+    'kopia-ui.desktop'
+)
+sha256sums=(
+    '7000f6999ea8d1975645293c3f4f3ba25583ba13d3095aef3cf274251b36b75f'
+    '27130be5b25b07169f764ddb8f8a08386bb17b5f33b5de140d3364fab6fd6eff'
+    'b7371b2b724c2823219483eaae880569484a7ca77faf6fe4b8985b6f152eb8df'
+)
 
 prepare() {
     cd "${_pkgname}-${pkgver}/app"
@@ -39,7 +47,8 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    "${_pkgname}" --completion-script-bash | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-    "${_pkgname}" --completion-script-zsh | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+    install -Dm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm 755 "${pkgname}" -t "${pkgdir}/usr/bin"
+    install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "dist/kopia-ui/linux-unpacked" "${pkgdir}/usr/lib/${pkgname}"
 }
