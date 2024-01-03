@@ -31,7 +31,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build -ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
-    npm --prefix app run build-electron -- --linux --x64 --dir app -c.electronDist='/usr/lib/electron' -c.electronVersion="$(</usr/lib/electron/version)"
+    npm --prefix app run build-electron -- --linux --x64 --dir -c.electronDist='/usr/lib/electron' -c.electronVersion="$(</usr/lib/electron/version)"
 }
 
 check() {
