@@ -15,8 +15,8 @@ optdepends=('fuse3: Needed to mount Kopia snapshots on local filesystem')
 checkdepends=('openssh' 'inetutils')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-    'kopia-ui'
-    'kopia-ui.desktop'
+    "${pkgname}"
+    "${pkgname}.desktop"
 )
 sha256sums=(
     '7000f6999ea8d1975645293c3f4f3ba25583ba13d3095aef3cf274251b36b75f'
@@ -36,7 +36,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -o 'dist/kopia_linux_x64' -ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
+    go build -o "dist/${_pkgname}_linux_x64" -ldflags "-linkmode=external -X github.com/${_pkgname}/${_pkgname}/repo.BuildVersion=${pkgver}-${pkgrel} -X github.com/${_pkgname}/${_pkgname}/repo.BuildInfo=unofficial -X github.com/${_pkgname}/${_pkgname}/repo.BuildGitHubRepo=ARCH_USER_REPOSITORY"
     npm --prefix app run build-electron -- --linux --x64 --dir -c.electronDist='/usr/lib/electron' -c.electronVersion="$(</usr/lib/electron/version)"
 }
 
@@ -47,8 +47,8 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    install -Dm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm 755 "${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm 644 "../${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm 755 "../${pkgname}" -t "${pkgdir}/usr/bin"
     install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "dist/kopia-ui/linux-unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "dist/${pkgname}/linux-unpacked" "${pkgdir}/usr/lib/${pkgname}"
 }
