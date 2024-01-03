@@ -24,6 +24,7 @@ jobs:
           - fselect
           - kernel-install-for-dracut
           - kopia
+          - kopia-ui-bin
           - linux-zen-versioned-bin
           - mpris-proxy-service
           - networkd-broker
@@ -69,7 +70,6 @@ jobs:
         PKGBUILDs:
           - ion-git
           - java-openjfx
-          - kopia-ui
           - veracrypt-updated
 
       fail-fast: false
