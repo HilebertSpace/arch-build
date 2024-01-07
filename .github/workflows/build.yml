@@ -34,6 +34,7 @@ jobs:
           - ripgrep-all-git
           - rustic-rs
           - swt
+          - ttf-maple
           - watchman
         include:
           - repos: ripgrep-all-git
