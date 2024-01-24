@@ -39,7 +39,7 @@ jobs:
           - watchman
         include:
           - repos: ripgrep-all-git
-            preinstall-pkgs: pandoc poppler
+            preinstall-pkgs: "pandoc-cli poppler"
 
       fail-fast: false
 
