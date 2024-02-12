@@ -32,6 +32,7 @@ jobs:
           - networkd-notify-git
           - paccache-hook
           - playerctld-systemd-unit
+          - powershell
           - ripgrep-all-git
           - rustic-rs
           - swt
