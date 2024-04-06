@@ -27,9 +27,8 @@ jobs:
           - networkd-notify-git
           - paccache-hook
           - playerctld-systemd-unit
-          - rustic-rs
           - swt
-          - watchman
+          - watchman-bin
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -61,8 +60,8 @@ jobs:
         PKGBUILDs:
           - fselect
           - ion-git
+          - rustic-rs
           - veracrypt-updated
-
       fail-fast: false
 
     runs-on: ubuntu-latest
