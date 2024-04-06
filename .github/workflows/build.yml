@@ -13,7 +13,6 @@ jobs:
           - adduser-deb
           - alist
           - carapace
-          - clash-verge-rev-bin
           - davmail
           - doggo
           - dracut-git
@@ -22,10 +21,7 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
-          - informant
           - kernel-install-for-dracut
-          - kopia
-          - kopia-ui-bin
           - linux-zen-versioned-bin
           - mpris-proxy-service
           - networkd-broker
@@ -36,10 +32,6 @@ jobs:
           - rustic-rs
           - swt
           - watchman
-        include:
-          - repos: ripgrep-all-git
-            preinstall-pkgs: "pandoc-cli poppler"
-
       fail-fast: false
 
     runs-on: ubuntu-latest
