@@ -44,6 +44,8 @@ BASEDIR="$PWD"
 echo "BASEDIR: $BASEDIR"
 cd "${INPUT_PKGDIR:-.}"
 
+cat /etc/makepkg.conf
+
 # Just generate .SRCINFO
 if ! [ -f .SRCINFO ]; then
     sudo -u builder makepkg --printsrcinfo > .SRCINFO
