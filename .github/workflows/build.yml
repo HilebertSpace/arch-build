@@ -61,7 +61,6 @@ jobs:
       matrix:
         PKGBUILDs:
           - ion-git
-          - java-openjfx
           - veracrypt-updated
 
       fail-fast: false
