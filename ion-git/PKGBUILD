@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://gitlab.redox-os.org/redox-os/${_pkgname}"
 license=('MIT')
 makedepends=('git' 'rust' 'clang')
+options=(!lto)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
