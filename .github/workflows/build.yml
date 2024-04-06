@@ -20,7 +20,6 @@ jobs:
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
-          - fselect
           - kernel-install-for-dracut
           - linux-zen-versioned-bin
           - mpris-proxy-service
@@ -60,6 +59,7 @@ jobs:
     strategy:
       matrix:
         PKGBUILDs:
+          - fselect
           - ion-git
           - veracrypt-updated
 
