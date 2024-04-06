@@ -27,9 +27,9 @@ Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/\$arch
 Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/\$arch
 EOM
 
-pacman-key --init
 pacman-key --lsign-key "farseerfc@archlinux.org"
-pacman -Syu --noconfirm archlinuxcn-keyring paru
+pacman -Syu --noconfirm archlinuxcn-keyring
+pacman -Syu --noconfirm paru
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm ${INPUT_PREINSTALLPKGS}
 fi
