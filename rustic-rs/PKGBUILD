@@ -20,12 +20,12 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release #--all-features
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
-    cargo test --frozen --all-features
+    cargo test --frozen #--all-features
 }
 
 package() {
