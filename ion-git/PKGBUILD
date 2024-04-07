@@ -28,13 +28,19 @@ prepare() {
 
 build() {
     cd "${_pkgname}"
-    cargo build --frozen --release
-    make manual
+    mkdir manual/builtins
+    cargo build --frozen --release --features man,unicode
+    echo -n "# Builtin commands" > manual/src/builtins.md
+	for man in manual/builtins/*; do \
+		echo "" >> manual/src/builtins.md; \
+		echo -n "## " >> manual/src/builtins.md; \
+		cat $$man >> manual/src/builtins.md; \
+	done
 }
 
 check() {
     cd "${_pkgname}"
-    DEBUG=1 RUSTUP=0 make tests
+    cargo test --frozen --workspace --all-features
 }
 
 package() {
