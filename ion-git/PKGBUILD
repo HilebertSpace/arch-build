@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd "${_pkgname}"
-    cargo build --frozen --release
+    cargo build --frozen --release --all-features
     make manual
 }
 
