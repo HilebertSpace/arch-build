@@ -40,7 +40,8 @@ build() {
 
 check() {
     cd "${_pkgname}"
-    cargo test --frozen --workspace --all-features
+    bash tests/run_examples.sh
+    cargo test --workspace --all-features
 }
 
 package() {
