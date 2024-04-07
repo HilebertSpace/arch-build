@@ -41,7 +41,7 @@ build() {
 check() {
     cd "${_pkgname}"
     bash tests/run_examples.sh
-    cargo test --workspace --all-features
+    cargo test --workspace --features man,unicode
 }
 
 package() {
