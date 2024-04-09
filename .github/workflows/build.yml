@@ -12,6 +12,7 @@ jobs:
         repos:
           - adduser-deb
           - alist
+          - apparmor.d-git
           - carapace
           - davmail
           - doggo
