@@ -30,7 +30,7 @@ jobs:
           - playerctld-systemd-unit
           - remove-orphaned-kernels
           - swt
-          - watchman-bin
+          - watchman
       fail-fast: false
 
     runs-on: ubuntu-latest
