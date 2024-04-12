@@ -18,6 +18,7 @@ Include = /etc/pacman.d/mirrorlist
 Server = https://repo.archlinuxcn.org/\$arch
 EOM
 
+pacman-key --lsign-key "farseerfc@archlinux.org"
 pacman -Syu --noconfirm archlinuxcn-keyring
 pacman -Syu --noconfirm archlinuxcn-mirrorlist-git paru
 sed -i "s|^Server = https://repo.archlinuxcn.org/\$arch|Include = /etc/pacman.d/archlinuxcn-mirrorlist|g" /etc/pacman.conf
