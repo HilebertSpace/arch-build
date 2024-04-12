@@ -16,19 +16,13 @@ cat << EOM >> /etc/pacman.conf
 Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/\$arch
-Server = https://mirrors.xtom.us/archlinuxcn/\$arch
-Server = https://mirrors.xtom.jp/archlinuxcn/\$arch
-Server = https://mirrors.xtom.hk/archlinuxcn/\$arch
-Server = https://mirrors.xtom.nl/archlinuxcn/\$arch
-Server = https://mirrors.xtom.de/archlinuxcn/\$arch
-Server = https://mirrors.xtom.ee/archlinuxcn/\$arch
-Server = https://mirrors.xtom.au/archlinuxcn/\$arch
-Server = https://mirrors.ocf.berkeley.edu/archlinuxcn/\$arch
-Server = https://archlinux.ccns.ncku.edu.tw/archlinuxcn/\$arch
 EOM
 
 pacman -Syu --noconfirm archlinuxcn-keyring
-pacman -Syu --noconfirm paru
+pacman -Syu --noconfirm archlinuxcn-mirrorlist-git paru
+sed $d /etc/pacman.conf && 'Include = /etc/pacman.d/archlinuxcn-mirrorlist' >> /etc/pacman.conf
+cat /etc/pacman.conf
+
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm ${INPUT_PREINSTALLPKGS}
 fi
