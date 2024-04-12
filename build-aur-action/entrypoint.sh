@@ -20,7 +20,7 @@ EOM
 
 pacman -Syu --noconfirm archlinuxcn-keyring
 pacman -Syu --noconfirm archlinuxcn-mirrorlist-git paru
-sed $d /etc/pacman.conf && 'Include = /etc/pacman.d/archlinuxcn-mirrorlist' >> /etc/pacman.conf
+sed -i "s|^Server = https://repo.archlinuxcn.org/\$arch|Include = /etc/pacman.d/archlinuxcn-mirrorlist|g" /etc/pacman.conf
 cat /etc/pacman.conf
 
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
