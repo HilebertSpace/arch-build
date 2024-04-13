@@ -14,5 +14,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - --network=docker_ipv6_network
     - ${{ inputs.repo-name }}
