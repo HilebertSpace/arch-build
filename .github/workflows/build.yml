@@ -38,6 +38,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Create Docker network with IPv6
+      run: |
+        docker network create --ipv6 --subnet=2001:db8:1234::/64 docker_ipv6_network
+
     - uses: ./build-aur-action
       with:
         repo-name: ${{ matrix.repos }}
