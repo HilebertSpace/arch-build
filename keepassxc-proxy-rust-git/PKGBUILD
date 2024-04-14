@@ -32,7 +32,7 @@ build() {
 
 check() {
     cd "${_pkgname}"
-    cargo test --workspace --all-features
+    cargo test --all-features
 }
 
 package() {
