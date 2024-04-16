@@ -32,6 +32,7 @@ jobs:
           - remove-orphaned-kernels
           - swt
           - watchman-bin
+          - wechat-universal-bwrap
       fail-fast: false
 
     runs-on: ubuntu-latest
