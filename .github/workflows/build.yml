@@ -21,6 +21,7 @@ jobs:
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
+          - linuxqq
           - linux-zen-versioned-bin
           - mpris-proxy-service
           - networkd-broker
