@@ -21,7 +21,7 @@ jobs:
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
-          - libfprint-tod
+          - libfprint-tod-git
           - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
           - mpris-proxy-service
