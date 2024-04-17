@@ -26,7 +26,6 @@ jobs:
           - mpris-proxy-service
           - networkd-broker
           - networkd-notify-git
-          - paccache-hook
           - pacman-hook-kernel-install
           - playerctld-systemd-unit
           - remove-orphaned-kernels
