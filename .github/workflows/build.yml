@@ -29,6 +29,7 @@ jobs:
           - pacman-hook-kernel-install
           - playerctld-systemd-unit
           - remove-orphaned-kernels
+          - sudo-rs
           - swt
           - watchman-bin
           - wechat-universal-bwrap
