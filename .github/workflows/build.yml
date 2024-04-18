@@ -21,7 +21,6 @@ jobs:
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
-          - libfprint-tod-git
           - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
           - mpris-proxy-service
@@ -30,7 +29,6 @@ jobs:
           - pacman-hook-kernel-install
           - playerctld-systemd-unit
           - remove-orphaned-kernels
-          - sudo-rs
           - swt
           - watchman-bin
           - wechat-universal-bwrap
