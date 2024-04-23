@@ -13,6 +13,7 @@ jobs:
           - adduser-deb
           - alist
           - apparmor.d-git
+          - backblaze-b2
           - carapace
           - davmail
           - doggo
