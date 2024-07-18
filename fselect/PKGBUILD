@@ -1,7 +1,5 @@
 # Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 
-CFLAGS+=' -ffat-lto-objects'
-
 pkgname='fselect'
 pkgver='0.8.5'
 pkgrel='1'
@@ -20,6 +18,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    CFLAGS+=' -ffat-lto-objects'
     cargo build --frozen --release --all-features
 }
 
