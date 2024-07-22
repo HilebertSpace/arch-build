@@ -13,6 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 sha256sums=('ea220725efd4b96ade2d2d8b6f5c823778ea32881b05d1a47ca9b6cac724de15')
 
 build() {
+	ls
 	cd "${pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
