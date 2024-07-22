@@ -2,18 +2,17 @@
 
 _pkgname='chromecookieunlock'
 pkgname="yt-dlp-plugin-${_pkgname}"
-pkgver='v2024.04.29'
+pkgver='2024.04.29'
 pkgrel='1'
 pkgdesc="A yt-dlp plugin to unlock the cookie database of chromium-based browsers."
 arch=('any')
 url="https://github.com/seproDev/yt-dlp-ChromeCookieUnlock"
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ea220725efd4b96ade2d2d8b6f5c823778ea32881b05d1a47ca9b6cac724de15')
 
 build() {
-	ls
 	cd "${pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
