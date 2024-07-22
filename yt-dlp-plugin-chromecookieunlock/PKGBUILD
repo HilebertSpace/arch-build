@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/seproDev/yt-dlp-ChromeCookieUnlock"
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("https://github.com/darrenburns/rich-pixels/archive/refs/tags/${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('3ad12ddc69b10b411287990fb3d4541417c2b3efa7c72511f06f84e4c36dcff3')
 
 build() {
