@@ -1,7 +1,7 @@
 # Maintainer: loserMcloser <reebydobalina@gmail.com>
 
 _pkgname='chromecookieunlock'
-pkgname="yt-dlp-plugin-$_pkgname"
+pkgname="yt-dlp-plugin-${_pkgname}"
 pkgver='v2024.04.29'
 pkgrel='1'
 pkgdesc="A yt-dlp plugin to unlock the cookie database of chromium-based browsers."
@@ -13,11 +13,11 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 sha256sums=('ea220725efd4b96ade2d2d8b6f5c823778ea32881b05d1a47ca9b6cac724de15')
 
 build() {
-	cd "${_pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	cd "${pkgname}-${pkgver}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
