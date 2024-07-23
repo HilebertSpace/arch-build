@@ -28,7 +28,6 @@ prepare() {
 build() {
     cd "${_pkgname}"
     mkdir manual/builtins
-    CFLAGS+=' -ffat-lto-objects'
     cargo build --frozen --release --features man,unicode
     echo -n "# Builtin commands" > manual/src/builtins.md
 	for man in manual/builtins/*; do \
