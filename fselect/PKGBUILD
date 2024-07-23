@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/jhspetersson/${pkgname}"
 license=('MIT OR Apache-2.0')
 depends=('bzip2' 'gcc-libs' 'glibc')
-makedepends=('clang' 'lld' 'rust')
+makedepends=('rust')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
 sha512sums=('2833a617f4182386361ca56bd39179e76f011097c57976e8acd8bd1986651112619a6a5f8121a5718eec29d5a1eff0566debedc4ca493de153d3b2b140ccafb7')
 
@@ -19,8 +20,6 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    CFLAGS+="-fno-fat-lto-objects"
-    RUSTFLAGS+="-Clinker=clang -Clink-arg=-fuse-ld=lld"
     cargo build --frozen --release --all-features
 }
 
