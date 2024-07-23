@@ -20,6 +20,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    RUSTFLAGS+='-C link-args=-Wl,-z,shstk'
     cargo build --frozen --release --all-features
 }
 
