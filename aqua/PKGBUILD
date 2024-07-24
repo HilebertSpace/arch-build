@@ -29,6 +29,11 @@ build() {
   go build -ldflags '-compressdwarf=false -linkmode external' -o build ./cmd/...
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  go test ./...
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm 0755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
