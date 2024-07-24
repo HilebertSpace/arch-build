@@ -3,7 +3,7 @@
 _name='keepassxc-proxy'
 _pkgname="${_name}-rust"
 pkgname="${_pkgname}-git"
-pkgver='r1869.9bc52a5'
+pkgver='r34.0b81215-1'
 pkgrel='1'
 pkgdesc='Application that works as a proxy between Native Messaging browser extension and KeePassXC'
 arch=('x86_64')

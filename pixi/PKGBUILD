@@ -11,11 +11,6 @@ makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('e54e3be95c31f07ca9db92a18f3047ceae26726073052b4c8aec8df582ed61a1cad40cd2a2deacb13efe750b33009ddd1822374c2435a07e26617f0d13a3b26e')
 
-pkgver() {
-    cd "${pkgname}-${pkgver}"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
