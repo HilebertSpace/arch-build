@@ -24,6 +24,6 @@ build() {
 package() {
 	cd "${_pkgname}"
 	unzip -d build DeDRM_tools.zip
-	install -Dm 0644 -t "${pkgdir}/usr/share/calibre/system-plugins" build/DeDRM_plugin.zip build/Obok_plugin.zip
-	install -Dm 0644 -t "${pkgdir}/usr/share/doc/${pkgname}" build/README.md build/ReadMe_Overview.txt build/DeDRM_plugin_ReadMe.txt
+	install -Dm 0644 -t "${pkgdir}/usr/share/calibre/system-plugins" build/*plugin*
+	install -Dm 0644 -t "${pkgdir}/usr/share/doc/${pkgname}" build/*README*
 }
