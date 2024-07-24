@@ -5,11 +5,11 @@ pkgname='calibre-plugin-dedrm-git'
 pkgver='r1869.9bc52a5'
 pkgrel='1'
 pkgdesc='DeDRM tools for ebooks - Calibre plugin'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/noDRM/${_pkgname}"
 license=('GPL-3.0-only')
 depends=('calibre>=5.15')
-makedepends=('unzip' 'zip')
+makedepends=('git''unzip' 'zip')
 optdepends=('python-pycryptodome: for crytographic primitives')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
