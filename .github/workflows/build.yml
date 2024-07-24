@@ -67,6 +67,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
+          - calibre-plugin-dedrm-git
           - keepassxc-proxy-rust-git
           - yt-dlp-plugin-chromecookieunlock
       fail-fast: false
