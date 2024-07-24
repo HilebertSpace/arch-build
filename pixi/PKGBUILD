@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/prefix-dev/${pkgname}"
 license=('BSD-3-Clause')
 makedepends=('rust')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('e54e3be95c31f07ca9db92a18f3047ceae26726073052b4c8aec8df582ed61a1cad40cd2a2deacb13efe750b33009ddd1822374c2435a07e26617f0d13a3b26e')
 
