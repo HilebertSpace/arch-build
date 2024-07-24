@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 build() {
 	cd "${_pkgname}"
-    python3 make_release.py
+    	python3 make_release.py
 }
 
 package() {
