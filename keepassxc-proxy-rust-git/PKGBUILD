@@ -1,6 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_pkgname='keepassxc-proxy-rust'
+_name='keepassxc-proxy'
+_pkgname="${_name}-rust"
 pkgname="${_pkgname}-git"
 pkgver='r1869.9bc52a5'
 pkgrel='1'
@@ -36,10 +37,10 @@ build() {
 check() {
     cd "${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --all-features
+    cargo test --frozen --all-features
 }
 
 package() {
     cd "${_pkgname}"
-    install -Dm 0755 'target/release/keepassxc-proxy' "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm 0755 "target/release/${_name}" "${pkgdir}/usr/bin/${_pkgname}"
 }
