@@ -26,7 +26,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
+  export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
   export GOENV='off'
   go build -ldflags '-compressdwarf=false -linkmode external' -o build ./cmd/...
 }
