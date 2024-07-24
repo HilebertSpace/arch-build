@@ -22,6 +22,7 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
+          - ion-git
           - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
           - mpris-proxy-service
@@ -66,7 +67,6 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
-          - ion-git
           - keepassxc-proxy-rust-git
           - rustic-rs
           - veracrypt-updated
