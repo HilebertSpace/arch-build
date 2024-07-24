@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/noDRM/${_pkgname}"
 license=('GPL-3.0-only')
 depends=('calibre>=5.15')
-makedepends=('git''unzip' 'zip')
+makedepends=('git' 'unzip' 'zip')
 optdepends=('python-pycryptodome: for crytographic primitives')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
