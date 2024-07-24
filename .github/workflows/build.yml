@@ -33,6 +33,9 @@ jobs:
           - remove-orphaned-kernels
           - swt
           - wechat-universal-bwrap
+        include:
+          - repos: fselect
+            preinstall-pkgs: "cmake"
       fail-fast: false
 
     runs-on: ubuntu-latest
