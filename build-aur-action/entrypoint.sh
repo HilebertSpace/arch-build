@@ -28,8 +28,21 @@ if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
 fi
 
-DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
-source /etc/profile
+set_path(){
+    for i in "$@";
+    do
+        # Check if the directory exists
+        [ -d "$i" ] || continue
+
+        # Check if it is not already in your $PATH.
+        echo "$PATH" | grep -Eq "(^|:)$i(:|$)" && continue
+
+        # Then append it to $PATH and export it
+        export PATH="${PATH}:$i"
+    done
+}
+
+set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
 sudo -H -u builder paru -Syu --noconfirm --needed --clonedir=./ "${pkgname}"
 cd "./${pkgname}" || exit 1
 python3 ../build-aur-action/encode_name.py
