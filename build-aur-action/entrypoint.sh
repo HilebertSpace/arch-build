@@ -20,14 +20,14 @@ Server = https://repo.archlinuxcn.org/\$arch
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
-pacman -Syu --noconfirm archlinuxcn-keyring && pacman -Syu --noconfirm archlinuxcn-mirrorlist-git paru
+pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed archlinuxcn-mirrorlist-git paru
 sed -i '1i Server = https://repo.archlinuxcn.org/\$arch' /etc/pacman.d/archlinuxcn-mirrorlist
 sed -i "s|^Server = https://repo.archlinuxcn.org/\$arch|Include = /etc/pacman.d/archlinuxcn-mirrorlist|g" /etc/pacman.conf
 
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
-    pacman -Syu --noconfirm ${INPUT_PREINSTALLPKGS}
+    pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
 fi
 
-sudo --set-home -u builder PATH="/usr/bin/vendor_perl:$PATH" paru -S --noconfirm --clonedir=./ "$pkgname"
+sudo --set-home -u builder paru -Syu --noconfirm --needed --clonedir=./ "$pkgname"
 cd "./$pkgname" || exit 1
 python3 ../build-aur-action/encode_name.py

@@ -16,7 +16,7 @@ Server = https://repo.archlinuxcn.org/\$arch
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
-pacman -Syu --noconfirm archlinuxcn-keyring && pacman -Syu --noconfirm archlinuxcn-mirrorlist-git paru
+pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed archlinuxcn-mirrorlist-git paru
 sed -i '1i Server = https://repo.archlinuxcn.org/\$arch' /etc/pacman.d/archlinuxcn-mirrorlist
 sed -i "s|^Server = https://repo.archlinuxcn.org/\$arch|Include = /etc/pacman.d/archlinuxcn-mirrorlist|g" /etc/pacman.conf
 
@@ -51,7 +51,7 @@ function recursive_build () {
     sudo -u builder makepkg --printsrcinfo > .SRCINFO
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
-    sudo -H -u builder PATH="/usr/bin/vendor_perl:$PATH" paru --sync --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
+    sudo -H -u builder paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
 
     sudo -H -u builder makepkg --install --noconfirm
     [ -d "$BASEDIR/local/" ] || mkdir "$BASEDIR/local/"
@@ -73,7 +73,7 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
     done
     cd "$CURDIR"
 
-    sudo -H -u builder PATH="/usr/bin/vendor_perl:$PATH" paru --sync --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
+    sudo -H -u builder paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
 fi
 
 # Build packages
@@ -110,7 +110,7 @@ function namcap_check() {
     # Run namcap checks
     # Installing namcap after building so that makepkg happens on a minimal
     # install where any missing dependencies can be caught.
-    pacman -S --noconfirm --needed namcap
+    pacman -Syu --noconfirm --needed namcap
 
     NAMCAP_ARGS=()
     if [ -n "${INPUT_NAMCAPRULES:-}" ]; then
