@@ -42,7 +42,7 @@ set_path(){
     done
 }
 
-set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
+# set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
 sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir=./ "${pkgname}"
 cd "./${pkgname}" || exit 1
 python3 ../build-aur-action/encode_name.py
