@@ -70,7 +70,6 @@ jobs:
         PKGBUILDs:
           - aqua
           - keepassxc-proxy-rust-git
-          - pixi
           - yt-dlp-plugin-chromecookieunlock
       fail-fast: false
 
