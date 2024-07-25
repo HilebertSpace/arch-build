@@ -28,6 +28,7 @@ if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
 fi
 
+DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
 source /etc/profile
 sudo -H -u builder paru -Syu --noconfirm --needed --clonedir=./ "${pkgname}"
 cd "./${pkgname}" || exit 1
