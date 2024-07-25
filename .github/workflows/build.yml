@@ -26,6 +26,7 @@ jobs:
           - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
           - mpris-proxy-service
+          - murex
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
