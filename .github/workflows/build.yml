@@ -16,7 +16,6 @@ jobs:
           - carapace
           - davmail
           - doggo
-          - dracut-git
           - dracut-numlock
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
