@@ -33,5 +33,5 @@ check() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm 0755 'target/release/${pkgname}' -t "${pkgdir}/usr/bin"
+    install -Dm 0755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 }
