@@ -28,6 +28,7 @@ if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
 fi
 
-sudo -H -i -u builder paru -Syu --noconfirm --needed --clonedir=./ "$pkgname"
-cd "./$pkgname" || exit 1
+sudo -H -i -u builder paru -Syu --noconfirm --needed --clonedir=./ "${pkgname}"
+ls
+cd "./${pkgname}" || exit 1
 python3 ../build-aur-action/encode_name.py
