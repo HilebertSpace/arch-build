@@ -54,7 +54,7 @@ set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
 
 # Just generate .SRCINFO
 if ! [ -f .SRCINFO ]; then
-    sudo -u builder builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+    sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
 fi
 
 function recursive_build () {
@@ -64,12 +64,12 @@ function recursive_build () {
         fi
     done
 
-    sudo -u builder builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+    sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
-    sudo -H -u builder builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
+    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
 
-    sudo -H -u builder builder env "PATH=${PATH}" makepkg --install --noconfirm
+    sudo -H -u builder env "PATH=${PATH}" makepkg --install --noconfirm
     [ -d "$BASEDIR/local/" ] || mkdir "$BASEDIR/local/"
     cp ./*.pkg.tar.zst "$BASEDIR/local/"
 }
@@ -89,16 +89,16 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
     done
     cd "$CURDIR"
 
-    sudo -H -u builder builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
+    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
 fi
 
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u builder builder env "PATH=${PATH}" makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
+sudo -H -u builder env "PATH=${PATH}" makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
-mapfile -t PKGFILES < <( sudo -u builder builder env "PATH=${PATH}" makepkg --packagelist )
+mapfile -t PKGFILES < <( sudo -u builder env "PATH=${PATH}" makepkg --packagelist )
 echo "Package(s): ${PKGFILES[*]}"
 
 # Report built package archives
