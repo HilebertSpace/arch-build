@@ -3,7 +3,7 @@ set -euo pipefail
 
 pkgname=$1
 
-source /etc/profile.d/*
+source /etc/profile.d/*.sh
 
 useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
