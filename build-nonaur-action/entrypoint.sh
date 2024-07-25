@@ -38,7 +38,7 @@ cd "${INPUT_PKGDIR:-.}"
 
 # Just generate .SRCINFO
 if ! [ -f .SRCINFO ]; then
-    sudo -H -u -i builder makepkg --printsrcinfo > .SRCINFO
+    sudo -H -i -u builder makepkg --printsrcinfo > .SRCINFO
 fi
 
 function recursive_build () {
@@ -48,12 +48,12 @@ function recursive_build () {
         fi
     done
 
-    sudo -H -u -i builder makepkg --printsrcinfo > .SRCINFO
+    sudo -H -i -u builder makepkg --printsrcinfo > .SRCINFO
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
-    sudo -H -u -i builder paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
+    sudo -H -i -u builder paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
 
-    sudo -H -u -i builder makepkg --install --noconfirm
+    sudo -H -i -u builder makepkg --install --noconfirm
     [ -d "$BASEDIR/local/" ] || mkdir "$BASEDIR/local/"
     cp ./*.pkg.tar.zst "$BASEDIR/local/"
 }
@@ -73,16 +73,16 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
     done
     cd "$CURDIR"
 
-    sudo -H -u -i builder paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
+    sudo -H -i -u builder paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
 fi
 
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u -i builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
+sudo -H -i -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
-mapfile -t PKGFILES < <( sudo -H -u -i builder makepkg --packagelist )
+mapfile -t PKGFILES < <( sudo -H -i -u builder makepkg --packagelist )
 echo "Package(s): ${PKGFILES[*]}"
 
 # Report built package archives
