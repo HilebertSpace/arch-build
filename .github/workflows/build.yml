@@ -26,6 +26,7 @@ jobs:
           - linux-zen-versioned-bin
           - mpris-proxy-service
           - murex
+          - nali-cli
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
