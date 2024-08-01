@@ -15,7 +15,7 @@ sha512sums=('c76a0026f04e551109b519a493109cd9b23b8f21345b86fb46738d0e05d1b333620
 
 prepare(){
   cd "${pkgname}-${pkgver}"
-  mkdir build
+  mkdir build completions
   go mod vendor -v
 }
 
@@ -28,6 +28,9 @@ build() {
   export GOPATH="${srcdir}"
   export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
   go build -ldflags '-compressdwarf=false -linkmode external' -o build ./cmd/...
+  build/${pkgname} completion bash > completions/bash
+  build/${pkgname} completion zsh > completions/zsh
+  build/${pkgname} completion fish > completions/fish
 }
 
 check() {
@@ -39,4 +42,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm 0755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish" 
 }
