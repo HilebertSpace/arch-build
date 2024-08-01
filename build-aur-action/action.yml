@@ -10,8 +10,13 @@ inputs:
     description: 'packages need install before build, separated by space'
     required: false
     default: ""
+  AUR_ONLY:
+    description: 'only building packages from the AUR'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.repo-name }}
+  env:
+    AUR_ONLY: ${{ inputs.AUR_ONLY }}
