@@ -11,22 +11,17 @@ chmod -R a+rw .
 sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 
 # Enable the multilib, archlinuxcn and chaotic aur repository
+cat << EOM >> /etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+[archlinuxcn]
+Server = https://repo.archlinuxcn.org/\$arch
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+EOM
+
 if [ ! -z "$AUR_ONLY" ]; then
-    cat << EOM >> /etc/pacman.conf
-    [multilib]
-    Include = /etc/pacman.d/mirrorlist
-    [archlinuxcn]
-    Server = https://repo.archlinuxcn.org/\$arch
-    [chaotic-aur]
-    Include = /etc/pacman.d/chaotic-mirrorlist
-    EOM
-else
-    cat << EOM >> /etc/pacman.conf
-    [multilib]
-    Include = /etc/pacman.d/mirrorlist
-    [archlinuxcn]
-    Server = https://repo.archlinuxcn.org/\$arch
-    EOM
+    sed '/\[chaotic-aur\]/,/EOM/d' /etc/pacman.conf
 fi
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed archlinuxcn-mirrorlist-git paru
