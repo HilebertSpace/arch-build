@@ -21,6 +21,7 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
+          - git-credential-manager
           - ion-git
           - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
@@ -38,6 +39,8 @@ jobs:
         include:
           - repos: fselect
             preinstall-pkgs: "cmake"
+          - repos: git-credential-manager
+            aur_only: "true"
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -49,6 +52,7 @@ jobs:
       with:
         repo-name: ${{ matrix.repos }}
         preinstallPkgs: ${{ matrix.preinstall-pkgs }}
+        aur_only: ${{ matrix.aur_only }}
 
     - uses: actions/upload-artifact@v4
       with:
