@@ -28,6 +28,8 @@ if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
 fi
 
+echo ${INPUT_AUR_ONLY}
+
 function set_path(){
     for i in "$@";
     do
