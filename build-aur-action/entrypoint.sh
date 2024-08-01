@@ -20,7 +20,7 @@ Server = https://repo.archlinuxcn.org/\$arch
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
-if [ ! -z "$AUR_ONLY" ]; then
+if [ ! -z "$INPUT_AURONLY" ]; then
     echo 'true'
     sed '/\[chaotic-aur\]/,/EOM/d' /etc/pacman.conf
 fi
