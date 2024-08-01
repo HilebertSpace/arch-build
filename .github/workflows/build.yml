@@ -40,7 +40,7 @@ jobs:
           - repos: fselect
             preinstall-pkgs: "cmake"
           - repos: git-credential-manager
-            AUR_ONLY: "true"
+            AURONLY: "true"
       fail-fast: false
 
     runs-on: ubuntu-latest
