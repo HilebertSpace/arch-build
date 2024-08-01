@@ -11,14 +11,23 @@ chmod -R a+rw .
 sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 
 # Enable the multilib, archlinuxcn and chaotic aur repository
-cat << EOM >> /etc/pacman.conf
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-[archlinuxcn]
-Server = https://repo.archlinuxcn.org/\$arch
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
-EOM
+if [ ! -z "$AUR_ONLY" ]; then
+    cat << EOM >> /etc/pacman.conf
+    [multilib]
+    Include = /etc/pacman.d/mirrorlist
+    [archlinuxcn]
+    Server = https://repo.archlinuxcn.org/\$arch
+    [chaotic-aur]
+    Include = /etc/pacman.d/chaotic-mirrorlist
+    EOM
+else
+    cat << EOM >> /etc/pacman.conf
+    [multilib]
+    Include = /etc/pacman.d/mirrorlist
+    [archlinuxcn]
+    Server = https://repo.archlinuxcn.org/\$arch
+    EOM
+fi
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed archlinuxcn-mirrorlist-git paru
 sed -i '1i Server = https://repo.archlinuxcn.org/\$arch' /etc/pacman.d/archlinuxcn-mirrorlist
@@ -43,10 +52,6 @@ function set_path(){
 }
 
 set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
-if [ ! -z "$AUR_ONLY" ]; then
-    sudo -H -u builder env "PATH=${PATH}" paru -Syu --aur --noconfirm --needed --clonedir=./ "${pkgname}"
-else
-    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir=./ "${pkgname}"
-fi
+sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir=./ "${pkgname}"
 cd "./${pkgname}" || exit 1
 python3 ../build-aur-action/encode_name.py
