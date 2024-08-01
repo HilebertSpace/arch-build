@@ -21,6 +21,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
 if [ ! -z "$AUR_ONLY" ]; then
+    echo 'true'
     sed '/\[chaotic-aur\]/,/EOM/d' /etc/pacman.conf
 fi
 
