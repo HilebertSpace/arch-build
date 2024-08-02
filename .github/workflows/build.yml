@@ -60,7 +60,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
-          - keepassxc-proxy-rust-git
+          - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
       fail-fast: false
 
