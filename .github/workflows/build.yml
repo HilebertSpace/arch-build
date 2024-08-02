@@ -23,7 +23,6 @@ jobs:
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
-          - playerctld-systemd-unit
           - proto
           - remove-orphaned-kernels
           - swt
