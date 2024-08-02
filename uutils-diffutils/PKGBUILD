@@ -35,9 +35,6 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    find target/release -maxdepth 1 -type f -executable | while read -r file; do
-        filename=$(basename "$file")
-        install -Dm 0755 "$file" "$pkgdir/usr/bin/uu-$filename"
-    done
-    install -Dm 0644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 0755 "${_pkgname}" "$pkgdir/usr/bin/uu-{_pkgname}"
+    install -Dm 0644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
