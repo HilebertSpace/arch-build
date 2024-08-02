@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/uutils/${_pkgname}"
 license=('MIT')
 makedepends=('rust')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('9d0e76e5c5651dca75607b1eb1b0c2b3192768aca132210c873dd701a68984e40833b170d5f971d92b555f0f67f0477c36ab779462bcf8abc209a6f9f9fed86b')
 
 prepare() {
