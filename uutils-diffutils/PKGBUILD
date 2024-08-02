@@ -1,19 +1,18 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-_pkgname='findutils'
-_url="https://github.com/uutils/${_pkgname}"
+_pkgname='diffutils'
 pkgname="uutils-${_pkgname}"
-pkgver='0.6.0'
+pkgver='0.4.1'
 pkgrel='1'
-pkgdesc="Rust implementation of findutils"
+pkgdesc='Drop-in replacement of diffutils in Rust'
 arch=('x86_64')
 url='https://uutils.github.io'
-license=('MIT')
-depends=('gcc-libs' 'glibc')
+license=('Apache-2.0 OR MIT')
+# depends=('gcc-libs' 'glibc')
 makedepends=('rust')
-options=('!lto')
+# options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate")
-sha512sums=('9d0e76e5c5651dca75607b1eb1b0c2b3192768aca132210c873dd701a68984e40833b170d5f971d92b555f0f67f0477c36ab779462bcf8abc209a6f9f9fed86b')
+sha512sums=('95108754e79636bb48b019c045a511d88f3eddadd68684ed4f017f90c37bcf767c5b60448b70123cbf3df940e0a789c46065f52d5c9a6a28c86949c1c7c15cac')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -36,7 +35,9 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    install -Dm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
-    install -Dm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
+    find target/release -maxdepth 1 -type f -executable | while read -r file; do
+        filename=$(basename "$file")
+        install -Dm 0755 "$file" "$pkgdir/usr/bin/uu-$filename"
+    done
     install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
