@@ -40,5 +40,5 @@ package() {
         filename=$(basename "$file")
         install -Dm 0755 "$file" "$pkgdir/usr/bin/uu-$filename"
     done
-    install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 0644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
