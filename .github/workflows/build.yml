@@ -20,12 +20,14 @@ jobs:
           - fselect
           - ion-git
           - linux-zen-versioned-bin
+          - linuxqq-nt-bwrap
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
           - proto
           - remove-orphaned-kernels
           - swt
+          - wechat-universal-bwrap
           - yabsnap
         include:
           - repos: fselect
