@@ -13,7 +13,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('rust')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate")
-sha512sums=('9d0e76e5c5651dca75607b1eb1b0c2b3192768aca132210c873dd701a68984e40833b170d5f971d92b555f0f67f0477c36ab779462bcf8abc209a6f9f9fed86b')
+sha512sums=('3a967c4f8100effa355dd23f52531204ae0a16a2fdd535b5d6d61906a334875fb7eb22b900c4f9e6b78651f0a102073a1a315ec04a079e41e0ef6ca09ef7c7cb')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
