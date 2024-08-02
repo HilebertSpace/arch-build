@@ -8,6 +8,7 @@ pkgdesc="Rust implementation of findutils"
 arch=('x86_64')
 url="https://github.com/uutils/${_pkgname}"
 license=('MIT')
+depends=('gcc-libs' 'glibc')
 makedepends=('rust')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
@@ -34,7 +35,7 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    find target/release -maxdepth 1 -executable -type f | while read -r file; do
-        install -Dm 0755 "${file}" "${pkgdir}/usr/bin/uu-$(basename "${file}")"
-    done
+    install -Dm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
+    install -Dm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
+    install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
