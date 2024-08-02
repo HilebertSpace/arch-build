@@ -27,6 +27,7 @@ jobs:
           - proto
           - remove-orphaned-kernels
           - swt
+          - wechat-uos-bwrap
           - wechat-universal-bwrap
           - yabsnap
         include:
