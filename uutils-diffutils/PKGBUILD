@@ -8,10 +8,9 @@ pkgdesc='Drop-in replacement of diffutils in Rust'
 arch=('x86_64')
 url='https://uutils.github.io'
 license=('Apache-2.0 OR MIT')
-# depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc')
 makedepends=('rust')
 checkdepends=('ed')
-# options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate")
 sha512sums=('95108754e79636bb48b019c045a511d88f3eddadd68684ed4f017f90c37bcf767c5b60448b70123cbf3df940e0a789c46065f52d5c9a6a28c86949c1c7c15cac')
 
