@@ -19,7 +19,6 @@ jobs:
           - fcitx5-pinyin-sougou
           - fselect
           - ion-git
-          - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
           - mpris-proxy-service
           - networkd-broker
@@ -29,7 +28,6 @@ jobs:
           - proto
           - remove-orphaned-kernels
           - swt
-          - wechat-universal-bwrap
           - yabsnap
         include:
           - repos: fselect
