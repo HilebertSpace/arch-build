@@ -4,7 +4,7 @@ _pkgname="findutils"
 pkgname="uutils-${_pkgname}"
 pkgver='0.6.0'
 pkgrel='1'
-pkgdesc="Rust implementation of ${_pkgname}"
+pkgdesc="Rust implementation of findutils"
 arch=('x86_64')
 url="https://github.com/uutils/${_pkgname}"
 license=('MIT')
@@ -13,25 +13,25 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 sha512sums=('9d0e76e5c5651dca75607b1eb1b0c2b3192768aca132210c873dd701a68984e40833b170d5f971d92b555f0f67f0477c36ab779462bcf8abc209a6f9f9fed86b')
 
 prepare() {
-    cd "${_pkgname}"
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "${_pkgname}"
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "${pkgname}-${pkgver}"
     find target/release -maxdepth 1 -executable -type f -exec bash -c 'install -Dm 0755 "$0" "${pkgdir}/usr/bin/uu-$(basename $0)"' {} +
 }
