@@ -34,5 +34,5 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    find target/release -maxdepth 1 -executable -type f -exec bash -c 'install -Dm0755 "$1" "${pkgdir}/usr/bin/uu-$(basename "$1")"' _ {} \;
+    find target/release -maxdepth 1 -executable -type f -exec bash -c 'pkgdir="$1"; shift; install -Dm0755 "$1" "${pkgdir}/usr/bin/uu-$(basename "$1")"' _ "${pkgdir}" {} \;
 }
