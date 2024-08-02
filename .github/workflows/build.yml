@@ -11,25 +11,19 @@ jobs:
       matrix:
         repos:
           - adduser-deb
-          - alist
-          - backblaze-b2
           - carapace
           - davmail
           - doggo
-          - dracut-numlock
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
           - ion-git
-          - linuxqq-nt-bwrap
           - linux-zen-versioned-bin
-          - mpris-proxy-service
-          - murex
+          - linuxqq-nt-bwrap
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
-          - playerctld-systemd-unit
           - proto
           - remove-orphaned-kernels
           - swt
@@ -68,7 +62,8 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
-          - keepassxc-proxy-rust-git
+          - uutils-diffutils
+          - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
       fail-fast: false
 
