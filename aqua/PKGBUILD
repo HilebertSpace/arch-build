@@ -16,7 +16,7 @@ sha512sums=('c76a0026f04e551109b519a493109cd9b23b8f21345b86fb46738d0e05d1b333620
 prepare(){
   cd "${pkgname}-${pkgver}"
   mkdir build completions
-  go mod vendor -v
+  go mod vendor
 }
 
 build() {
@@ -40,9 +40,9 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -vDm 0755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -vDm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -vDm 0644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -vDm 0644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -vDm 0644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm 0755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 0644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm 0644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm 0644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }
