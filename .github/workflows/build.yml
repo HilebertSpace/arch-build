@@ -28,6 +28,7 @@ jobs:
           - proto
           - remove-orphaned-kernels
           - swt
+          - vrms-arch-git
           - wechat-universal-bwrap
           - yabsnap
         include:
