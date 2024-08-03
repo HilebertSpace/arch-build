@@ -14,13 +14,9 @@ Include = /etc/pacman.d/mirrorlist
 Server = https://repo.archlinuxcn.org/\$arch
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
-[alerque]
-Server = https://arch.alerque.com/\$arch
 EOM
 
-pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed archlinuxcn-mirrorlist-git paru
-sed -i '1i Server = https://repo.archlinuxcn.org/\$arch' /etc/pacman.d/archlinuxcn-mirrorlist
-sed -i "s|^Server = https://repo.archlinuxcn.org/\$arch|Include = /etc/pacman.d/archlinuxcn-mirrorlist|g" /etc/pacman.conf
+pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
