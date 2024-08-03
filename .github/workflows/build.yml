@@ -13,6 +13,7 @@ jobs:
           - adduser-deb
           - carapace
           - davmail
+          - dingtalk-bin
           - doggo
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
