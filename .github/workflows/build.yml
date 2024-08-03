@@ -13,11 +13,13 @@ jobs:
           - adduser-deb
           - carapace
           - davmail
+          - dingtalk-bin
           - doggo
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
+          - httptoolkit-bin
           - ion-git
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap

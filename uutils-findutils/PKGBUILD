@@ -36,7 +36,7 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    install -Dm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
-    install -Dm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
-    install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -vDm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
+    install -vDm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
+    install -vDm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
