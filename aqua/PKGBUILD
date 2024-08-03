@@ -40,9 +40,9 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm 0755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 0644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm 0644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm 0644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm 0755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vDm 0644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm 0644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm 0644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }
