@@ -14,6 +14,8 @@ Include = /etc/pacman.d/mirrorlist
 Server = https://repo.archlinuxcn.org/\$arch
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
+[alerque]
+Server = https://arch.alerque.com/\$arch
 EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed archlinuxcn-mirrorlist-git paru
