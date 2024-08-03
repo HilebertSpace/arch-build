@@ -19,6 +19,7 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
+          - httptoolkit
           - ion-git
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
