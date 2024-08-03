@@ -19,7 +19,6 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
-          - httptoolkit-bin
           - ion-git
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
@@ -29,6 +28,7 @@ jobs:
           - proto
           - remove-orphaned-kernels
           - swt
+          - vrms-arch-git
           - wechat-universal-bwrap
           - yabsnap
         include:

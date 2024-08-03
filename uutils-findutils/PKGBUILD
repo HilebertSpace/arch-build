@@ -1,7 +1,6 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 _pkgname='findutils'
-_url="https://github.com/uutils/${_pkgname}"
 pkgname="uutils-${_pkgname}"
 pkgver='0.6.0'
 pkgrel='1'
@@ -36,7 +35,7 @@ check() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    install -vDm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
-    install -vDm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
-    install -vDm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
+    install -Dm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
+    install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
