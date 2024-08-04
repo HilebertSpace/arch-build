@@ -41,7 +41,6 @@ function set_path(){
 }
 
 set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
-echo ${AUR_ONLY}
 sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed $([[ "${AUR_ONLY}" == "true" ]] && echo --aur) --clonedir=./ "${pkgname}"
 cd "./${pkgname}" || exit 1
 python3 ../build-aur-action/encode_name.py

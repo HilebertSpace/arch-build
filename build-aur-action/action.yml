@@ -13,8 +13,7 @@ inputs:
   aur-only:
     description: 'only build package from AUR'
     required: false
-    type: boolean
-    default: false
+    default: ""
 runs:
   using: 'docker'
   image: 'Dockerfile'
