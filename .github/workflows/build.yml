@@ -31,7 +31,6 @@ jobs:
           - swt
           - tlrc
           - trashy
-          - vrms-arch-git
           - wechat-universal-bwrap
           - yabsnap
         include:
