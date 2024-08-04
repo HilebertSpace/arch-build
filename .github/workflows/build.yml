@@ -19,7 +19,6 @@ jobs:
           - fcitx5-pinyin-sougou
           - fselect
           - ion-git
-          - kopia
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
           - networkd-broker
