@@ -10,7 +10,7 @@ inputs:
     description: 'packages need install before build, separated by space'
     required: false
     default: ""
-  aur-only:
+  aurOnly:
     description: 'only build package from AUR'
     required: false
     default: ""
