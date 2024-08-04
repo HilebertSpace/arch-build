@@ -16,9 +16,9 @@ build() {
   cd "${pkgname}-${pkgver}"
   gcc "${pkgname}.c"  -lpthread -o "${pkgname}"
   mkdir -p autocompletions 2>/dev/null
-  "${pkgname}" --autocomplete-bash > "autocompletions/${pkgname}.bash"
-  "${pkgname}" --autocomplete-zsh > "autocompletions/${pkgname}.zsh"
-  "${pkgname}" --autocomplete-fish > "autocompletions/${pkgname}.fish"
+  "./${pkgname}" --autocomplete-bash > "autocompletions/${pkgname}.bash"
+  "./${pkgname}" --autocomplete-zsh > "autocompletions/${pkgname}.zsh"
+  "./${pkgname}" --autocomplete-fish > "autocompletions/${pkgname}.fish"
 }
 
 package() {
