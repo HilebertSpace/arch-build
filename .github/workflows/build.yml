@@ -35,7 +35,7 @@ jobs:
           - repos: fselect
             preinstall-pkgs: "cmake"
           - repos: kopia
-            aur-only: true
+            aur-only: "true"
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       with:
         repo-name: ${{ matrix.repos }}
         preinstallPkgs: ${{ matrix.preinstall-pkgs }}
-        aur-only: ${{ matrix.aur-only }}
+        aurOnly: ${{ matrix.aur-only }}
 
     - uses: actions/upload-artifact@v4
       with:

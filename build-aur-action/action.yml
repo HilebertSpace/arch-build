@@ -10,11 +10,10 @@ inputs:
     description: 'packages need install before build, separated by space'
     required: false
     default: ""
-  aur-only:
+  aurOnly:
     description: 'only build package from AUR'
     required: false
-    type: boolean
-    default: false
+    default: ""
 runs:
   using: 'docker'
   image: 'Dockerfile'
