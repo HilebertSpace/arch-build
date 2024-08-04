@@ -12,6 +12,7 @@ jobs:
         repos:
           - adduser-deb
           - carapace
+          - cheat
           - davmail
           - dingtalk-bin
           - doggo
