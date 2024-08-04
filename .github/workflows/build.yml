@@ -12,6 +12,7 @@ jobs:
         repos:
           - adduser-deb
           - carapace
+          - cheat
           - davmail
           - dingtalk-bin
           - doggo
@@ -22,13 +23,15 @@ jobs:
           - ion-git
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
+          - murex
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
           - proto
           - remove-orphaned-kernels
           - swt
-          - vrms-arch-git
+          - tlrc
+          - trashy
           - wechat-universal-bwrap
           - yabsnap
         include:
