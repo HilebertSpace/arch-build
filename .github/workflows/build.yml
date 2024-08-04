@@ -19,6 +19,7 @@ jobs:
           - fcitx5-pinyin-sougou
           - fselect
           - ion-git
+          - kopia
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
           - networkd-broker
@@ -33,6 +34,8 @@ jobs:
         include:
           - repos: fselect
             preinstall-pkgs: "cmake"
+          - repos: kopia
+            aur-only: true
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -44,6 +47,7 @@ jobs:
       with:
         repo-name: ${{ matrix.repos }}
         preinstallPkgs: ${{ matrix.preinstall-pkgs }}
+        aur-only: ${{ matrix.aur-only }}
 
     - uses: actions/upload-artifact@v4
       with:
