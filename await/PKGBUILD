@@ -20,7 +20,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm 0755 "${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 0644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm 0644 "${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm 0644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm 0644 "autocompletions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm 0644 "autocompletions/${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm 0644 "autocompletions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }
