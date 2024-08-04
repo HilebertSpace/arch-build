@@ -12,9 +12,7 @@ jobs:
         repos:
           - adduser-deb
           - carapace
-          - cheat
           - davmail
-          - dingtalk-bin
           - doggo
           - fcitx5-pinyin-custom-pinyin-dictionary
           - fcitx5-pinyin-chinese-idiom
@@ -23,7 +21,6 @@ jobs:
           - ion-git
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
-          - murex
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
@@ -31,7 +28,6 @@ jobs:
           - remove-orphaned-kernels
           - swt
           - tlrc
-          - trashy
           - wechat-universal-bwrap
           - yabsnap
         include:
