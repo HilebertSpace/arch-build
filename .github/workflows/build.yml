@@ -47,7 +47,7 @@ jobs:
       with:
         repo-name: ${{ matrix.repos }}
         preinstallPkgs: ${{ matrix.preinstall-pkgs }}
-        aur-only: ${{ matrix.aur-only }}
+        aurOnly: ${{ matrix.aur-only }}
 
     - uses: actions/upload-artifact@v4
       with:
