@@ -29,6 +29,7 @@ jobs:
           - proto
           - remove-orphaned-kernels
           - swt
+          - tlrc
           - trashy
           - vrms-arch-git
           - wechat-universal-bwrap
