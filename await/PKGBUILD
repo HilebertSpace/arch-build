@@ -14,7 +14,7 @@ sha512sums=('74918b513dc0e45e45f181d423afe3cd2572cbc0cbd27ca4ac02002aca3706e51b5
 
 build() {
   cd "${pkgname}-${pkgver}"
-  gcc "${pkgname}.c"  -lpthread -o "${pkgname}"
+  gcc "${pkgname}.c" -lpthread -o "${pkgname}"
   mkdir -p autocompletions 2>/dev/null
   "./${pkgname}" --autocomplete-bash > "autocompletions/${pkgname}.bash"
   "./${pkgname}" --autocomplete-zsh > "autocompletions/${pkgname}.zsh"
