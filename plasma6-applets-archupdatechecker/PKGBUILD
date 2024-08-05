@@ -21,6 +21,15 @@ depends=(
   'plasma5support'
   'qt6-declarative'
 )
+optdepends=(
+  'aura: AUR support'
+  'flatpak: Flatpak support'
+  'pacaur: AUR support'
+  'paru: AUR support'
+  'pikaur: AUR support'
+  'trizen: AUR support'
+  'yay: AUR support'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('83eb574c386d298581e742e531671cce23579725056e4977c70707a01fca28659ec0e704c323f6d87119dfcb0bb027a9d00e0fa2eb99c06bb85e5a4f7c0131ed')
 
