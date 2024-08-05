@@ -25,6 +25,7 @@ jobs:
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
+          - pacman-log-orphans-hook
           - proto
           - remove-orphaned-kernels
           - swt

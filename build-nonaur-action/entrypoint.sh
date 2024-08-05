@@ -30,8 +30,8 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
 
-BASEDIR="$PWD"
-echo "BASEDIR: $BASEDIR"
+BASEDIR="${PWD}"
+echo "BASEDIR: ${BASEDIR}"
 cd "${INPUT_PKGDIR:-.}"
 
 function set_path(){
@@ -41,7 +41,7 @@ function set_path(){
         [ -d "$i" ] || continue
 
         # Check if it is not already in your $PATH.
-        echo "$PATH" | grep -Eq "(^|:)$i(:|$)" && continue
+        echo "${PATH}" | grep -Eq "(^|:)$i(:|$)" && continue
 
         # Then append it to $PATH and export it
         export PATH="${PATH}:$i"
@@ -65,11 +65,11 @@ function recursive_build () {
     sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
-    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${OTHERPKGDEPS[@]}"
+    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${OTHERPKGDEPS[@]}"
 
     sudo -H -u builder env "PATH=${PATH}" makepkg --install --noconfirm
-    [ -d "$BASEDIR/local/" ] || mkdir "$BASEDIR/local/"
-    cp ./*.pkg.tar.zst "$BASEDIR/local/"
+    [ -d "${BASEDIR}/local/" ] || mkdir "${BASEDIR}/local/"
+    cp ./*.pkg.tar.zst "${BASEDIR}/local/"
 }
 
 # Optionally install dependencies from AUR
@@ -79,15 +79,15 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
 
     # If package have dependencies from AUR and we want to use our PKGBUILD of these dependencies
-    CURDIR="$PWD"
+    CURDIR="${PWD}"
     for d in *; do
         if [ -d "$d" ]; then
             (cd -- "$d" && recursive_build)
         fi
     done
-    cd "$CURDIR"
+    cd "${CURDIR}"
 
-    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="$BASEDIR" "${PKGDEPS[@]}"
+    sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${PKGDEPS[@]}"
 fi
 
 # Build packages
@@ -103,12 +103,12 @@ echo "Package(s): ${PKGFILES[*]}"
 i=0
 for PKGFILE in "${PKGFILES[@]}"; do
     # makepkg reports absolute paths, must be relative for use by other actions
-    RELPKGFILE="$(realpath --relative-base="$BASEDIR" "$PKGFILE")"
+    RELPKGFILE="$(realpath --relative-base="${BASEDIR}" "${PKGFILE}")"
     # Caller arguments to makepkg may mean the pacakge is not built
-    if [ -f "$PKGFILE" ]; then
-        echo "pkgfile$i=$RELPKGFILE" >> $GITHUB_OUTPUT
+    if [ -f "${PKGFILE}" ]; then
+        echo "pkgfile$i=${RELPKGFILE}" >> $GITHUB_OUTPUT
     else
-        echo "Archive $RELPKGFILE not built"
+        echo "Archive ${RELPKGFILE} not built"
     fi
     (( ++i ))
 done
@@ -116,7 +116,7 @@ done
 function prepend () {
     # Prepend the argument to each input line
     while read -r line; do
-        echo "$1$line"
+        echo "$1${line}"
     done
 }
 
@@ -144,12 +144,12 @@ function namcap_check() {
     export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
     namcap "${NAMCAP_ARGS[@]}" PKGBUILD \
-        | prepend "::warning file=$FILE,line=$LINENO::"
+        | prepend "::warning file=${FILE},line=${LINENO}::"
     for PKGFILE in "${PKGFILES[@]}"; do
-        if [ -f "$PKGFILE" ]; then
-            RELPKGFILE="$(realpath --relative-base="$BASEDIR" "$PKGFILE")"
-            namcap "${NAMCAP_ARGS[@]}" "$PKGFILE" \
-                | prepend "::warning file=$FILE,line=$LINENO::$RELPKGFILE:"
+        if [ -f "${PKGFILE}" ]; then
+            RELPKGFILE="$(realpath --relative-base="${BASEDIR}" "${PKGFILE}")"
+            namcap "${NAMCAP_ARGS[@]}" "${PKGFILE}" \
+                | prepend "::warning file=${FILE},line=${LINENO}::${RELPKGFILE}:"
         fi
     done
 }

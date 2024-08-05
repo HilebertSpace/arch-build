@@ -33,7 +33,7 @@ function set_path(){
         [ -d "$i" ] || continue
 
         # Check if it is not already in your $PATH.
-        echo "$PATH" | grep -Eq "(^|:)$i(:|$)" && continue
+        echo "${PATH}" | grep -Eq "(^|:)$i(:|$)" && continue
 
         # Then append it to $PATH and export it
         export PATH="${PATH}:$i"
