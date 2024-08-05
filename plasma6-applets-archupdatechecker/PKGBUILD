@@ -8,7 +8,19 @@ pkgdesc="A KDE Plasma 6 applet to show and install all your updates."
 arch=('any')
 url="https://github.com/dhruv8sh/${_pkgname}"
 license=('GPL-2.0-only')
-depends=('plasma-workspace')
+depends=(
+  'libplasma'
+  'kdeclarative'
+  'kirigami'
+  'kitemmodels'
+  'knotifications'
+  'ksvg'
+  'pacman-contrib'
+  'pacutils'
+  'plasma-workspace'
+  'plasma5support'
+  'qt6-declarative'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('83eb574c386d298581e742e531671cce23579725056e4977c70707a01fca28659ec0e704c323f6d87119dfcb0bb027a9d00e0fa2eb99c06bb85e5a4f7c0131ed')
 
