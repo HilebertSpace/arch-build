@@ -33,7 +33,7 @@ rm "./${repo_name:?}.files.tar.gz"
 
 if [ ! -z "${gpg_key}" ]; then
     packages=( "*.tar.zst" )
-    for name in "${packages}"
+    for name in ${packages}
     do
         gpg --detach-sig --yes "${name}"
     done
