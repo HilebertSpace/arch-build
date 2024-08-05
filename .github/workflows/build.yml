@@ -67,6 +67,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
+          - plasma6-applets-archupdatechecker
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
