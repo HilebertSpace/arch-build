@@ -24,6 +24,7 @@ jobs:
           - linuxqq-nt-bwrap
           - networkd-broker
           - networkd-notify-git
+          - paccache-hook
           - pacman-hook-kernel-install
           - pacman-log-orphans-hook
           - proto
