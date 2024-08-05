@@ -14,7 +14,7 @@ sha512sums=('83eb574c386d298581e742e531671cce23579725056e4977c70707a01fca28659ec
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  find contents -type f -exec install -Dm 755 "{}" "target/directory/{}" \;
+  find contents -type f -exec install -Dm 755 "{}" "${pkgdir}/usr/share/plasma/plasmoids/org.kde.archupdatechecker/{}" \;
   install -Dm 0644 metadata.json -t "${pkgdir}/usr/share/plasma/plasmoids/org.kde.archupdatechecker"
   install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
