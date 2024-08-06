@@ -18,9 +18,6 @@ EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
 
-git config --global safe.directory .
-cat /etc/gitconfig
-
 # Makepkg does not allow running as root
 # Create a new user `builder`
 # `builder` needs to have a home directory because some PKGBUILDs will try to
@@ -29,6 +26,8 @@ useradd builder -m
 # When installing dependencies, makepkg will use sudo
 # Give user `builder` passwordless sudo access
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+sudo -u builder env "PATH=${PATH}" git config --global safe.directory '*'
 
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
