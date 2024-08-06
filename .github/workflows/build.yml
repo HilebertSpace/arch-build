@@ -27,6 +27,7 @@ jobs:
           - networkd-notify-git
           - pacman-hook-kernel-install
           - pacman-log-orphans-hook
+          - pgadmin4-desktop
           - proto
           - remove-orphaned-kernels
           - swt
