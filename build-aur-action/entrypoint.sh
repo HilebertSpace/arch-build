@@ -6,7 +6,7 @@ pkgname=$1
 useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 whoami
-ls -al
+ls -al /etc
 chmod -R a+rw .
 
 # Enable the cloudflare mirror
