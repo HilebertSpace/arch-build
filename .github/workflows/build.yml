@@ -19,6 +19,7 @@ jobs:
           - fcitx5-pinyin-chinese-idiom
           - fcitx5-pinyin-sougou
           - fselect
+          - git-credential-manager
           - ion-git
           - kopia
           - linux-zen-versioned-bin
@@ -38,6 +39,8 @@ jobs:
         include:
           - repos: fselect
             preinstall-pkgs: "cmake"
+          - repos: git-credential-manager
+            aur-only: "true"
           - repos: kopia
             aur-only: "true"
       fail-fast: false
