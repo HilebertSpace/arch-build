@@ -44,6 +44,8 @@ jobs:
             aur-only: "true"
           - repos: kopia
             aur-only: "true"
+          - repos: powershell
+            aur-only: "true"
       fail-fast: false
 
     runs-on: ubuntu-latest
