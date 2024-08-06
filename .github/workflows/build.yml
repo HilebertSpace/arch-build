@@ -31,6 +31,7 @@ jobs:
           - remove-orphaned-kernels
           - swt
           - tlrc
+          - ttf-resource-han-rounded
           - wechat-universal-bwrap
           - yabsnap
         include:
