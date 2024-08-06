@@ -4,4 +4,5 @@ RUN pacman-key --init && pacman-key --lsign-key "farseerfc@archlinux.org" && pac
 
 COPY entrypoint.sh /entrypoint.sh
 
+USER root
 ENTRYPOINT ["/entrypoint.sh"]
