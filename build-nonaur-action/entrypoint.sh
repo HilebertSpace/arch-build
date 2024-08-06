@@ -18,7 +18,8 @@ EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
 
-git config --global safe.directory '*'
+git config --global safe.directory .
+cat /etc/gitconfig
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
