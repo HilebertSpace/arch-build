@@ -55,6 +55,8 @@ if ! [ -f .SRCINFO ]; then
     sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
 fi
 
+chown -R builder:builder .
+
 function recursive_build () {
     for d in *; do
         if [ -d "$d" ]; then
