@@ -20,7 +20,6 @@ jobs:
           - fcitx5-pinyin-sougou
           - fselect
           - git-credential-manager
-          - git-credential-manager-extras
           - ion-git
           - kopia
           - linux-zen-versioned-bin
@@ -30,6 +29,7 @@ jobs:
           - pacman-hook-kernel-install
           - pacman-log-orphans-hook
           - pgadmin4-desktop
+          - powershell
           - proto
           - remove-orphaned-kernels
           - swt
