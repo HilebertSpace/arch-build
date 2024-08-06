@@ -90,7 +90,7 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${PKGDEPS[@]}"
 fi
 
-ls -ah
+ls -lh
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
