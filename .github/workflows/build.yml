@@ -11,7 +11,6 @@ jobs:
       matrix:
         repos:
           - adduser-deb
-          - azuredatastudio-bin
           - backblaze-b2
           - carapace
           - davmail
