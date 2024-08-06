@@ -93,7 +93,7 @@ fi
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u builder env "PATH=${PATH}" paru -B --noconfirm ${INPUT_MAKEPKGARGS:-}
+sudo -H -u builder env "PATH=${PATH}" paru -B --noconfirm .
 
 # Get array of packages to be built
 mapfile -t PKGFILES < <( sudo -u builder env "PATH=${PATH}" makepkg --packagelist )
