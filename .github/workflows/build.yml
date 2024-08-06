@@ -23,7 +23,6 @@ jobs:
           - kopia
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
-          - megasync
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
