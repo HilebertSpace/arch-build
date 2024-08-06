@@ -30,9 +30,7 @@ build() {
   export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
   export GOENV='off'
   BUILD_DATE="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)"
-  echo ${BUILD_DATE}
-  echo ${SOURCE_DATE_EPOCH}
-  go build -ldflags "-compressdwarf=false -linkmode=external -X main.version=${pkgver} -X main.commit=${_commit} -X main.date=${BUILD_DATE}" -o build ./cmd/...
+  go build -ldflags "-compressdwarf=false -linkmode=external -X 'main.version=${pkgver}' -X m'ain.commit=${_commit}' -X 'main.date=${BUILD_DATE}'" -o build ./cmd/...
   "build/${pkgname}" completion bash > completions/bash
   "build/${pkgname}" completion zsh > completions/zsh
   "build/${pkgname}" completion fish > completions/fish
