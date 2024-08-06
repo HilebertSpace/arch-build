@@ -1,6 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 # Contributor: djmattyg007 <internet@matthewgamble.net>
 
+_commit='1e48dedbcb06a39b5f61615ec9f03866c4aecb4c'
 pkgname='aqua'
 pkgver='2.30.0'
 pkgrel='1'
@@ -28,7 +29,8 @@ build() {
   export GOPATH="${srcdir}"
   export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
   export GOENV='off'
-  go build -ldflags '-compressdwarf=false -linkmode external' -o build ./cmd/...
+  BUILD_DATE="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)"
+  go build -ldflags "-compressdwarf=false -linkmode=external -X main.version=${pkgver} -X main.commit=${_commit} -X main.date=${BUILD_DATE}" -o build ./cmd/...
   "build/${pkgname}" completion bash > completions/bash
   "build/${pkgname}" completion zsh > completions/zsh
   "build/${pkgname}" completion fish > completions/fish
