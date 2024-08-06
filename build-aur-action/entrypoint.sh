@@ -21,6 +21,10 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
+pacman -Syu --noconfirm --needed dotnet-targeting-pack-bin
+pacman -Syu --noconfirm --needed dotnet-host-bin
+pacman -Syu --noconfirm --needed dotnet-runtime-bin
+pacman -Syu --noconfirm --needed dotnet-sdk-bin
 
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
