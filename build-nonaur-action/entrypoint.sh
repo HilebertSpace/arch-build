@@ -55,8 +55,6 @@ if ! [ -f .SRCINFO ]; then
     sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
 fi
 
-chown -R builder:builder .
-
 function recursive_build () {
     for d in *; do
         if [ -d "$d" ]; then
@@ -92,11 +90,10 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${PKGDEPS[@]}"
 fi
 
-ls -al
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u builder env "PATH=${PATH}" makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
+sudo -H -u builder env "PATH=${PATH}" paru -B --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
 mapfile -t PKGFILES < <( sudo -u builder env "PATH=${PATH}" makepkg --packagelist )
