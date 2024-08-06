@@ -26,6 +26,7 @@ useradd builder -m
 # When installing dependencies, makepkg will use sudo
 # Give user `builder` passwordless sudo access
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+git config --global --add safe.directory '*'
 
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
@@ -90,7 +91,6 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${PKGDEPS[@]}"
 fi
 
-ls -al
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
