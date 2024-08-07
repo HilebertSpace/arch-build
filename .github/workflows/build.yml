@@ -41,6 +41,8 @@ jobs:
             preinstall-pkgs: "cmake"
           - repos: kopia
             aur-only: "true"
+          - repos: qmplay2
+            aur-only: "true"
       fail-fast: false
 
     runs-on: ubuntu-latest
