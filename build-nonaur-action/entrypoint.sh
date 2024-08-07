@@ -57,11 +57,11 @@ function create_git_repository() {
     [ -d .git ] && return
 
     local git_commands=(
-        'config --global init.defaultBranch main'
+        "config --global init.defaultBranch main"
         "config --global --add safe.directory ${PWD}"
-        'init'
+        "init"
         "add ."
-        'commit -m create git repository'
+        "commit -m create git repository"
     )
 
     for cmd in "${git_commands[@]}"; do
