@@ -50,7 +50,7 @@ set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
 
 # Just generate .SRCINFO
 if ! [ -f .SRCINFO ]; then
-    sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+    sudo -H -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
 fi
 
 function create_git_repository() {
@@ -69,7 +69,7 @@ function recursive_build () {
         fi
     done
 
-    sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+    sudo -H -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${OTHERPKGDEPS[@]}"
@@ -104,7 +104,7 @@ create_git_repository
 sudo -H -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
-mapfile -t PKGFILES < <( sudo -u builder env "PATH=${PATH}" makepkg --packagelist )
+mapfile -t PKGFILES < <( sudo -H -u builder env "PATH=${PATH}" makepkg --packagelist )
 echo "Package(s): ${PKGFILES[*]}"
 
 # Report built package archives
