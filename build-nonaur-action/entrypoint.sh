@@ -58,7 +58,7 @@ function create_git_repository() {
 
     local git_commands=(
         'config --global init.defaultBranch main'
-        "config --global --add safe.directory '${PWD}'"
+        "config --global --add safe.directory ${PWD}"
         'init'
         'add .'
         'commit -m "create git repository"'
