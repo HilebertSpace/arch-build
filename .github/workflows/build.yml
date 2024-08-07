@@ -29,6 +29,7 @@ jobs:
           - pacman-log-orphans-hook
           - pgadmin4-desktop
           - proto
+          - qmplay2
           - remove-orphaned-kernels
           - swt
           - tlrc
