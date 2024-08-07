@@ -55,7 +55,8 @@ fi
 
 function create_git_repository() {
     if [ ! -d .git ]; then
-        sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory "${PWD}"
+        sudo -H -u builder env "PATH=${PATH}" git config --global init.defaultBranch main
+        sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory .
         sudo -H -u builder env "PATH=${PATH}" git config --global -l
         sudo -H -u builder env "PATH=${PATH}" git init
         sudo -H -u builder env "PATH=${PATH}" git add .
