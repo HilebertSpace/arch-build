@@ -58,9 +58,10 @@ fi
 
 # Create a new git repository if not already one
 if [ ! -d .git ]; then
-    sudo -H -u builder git init
-    sudo -H -u builder git add .
-    sudo -H -u builder git commit -m "Initial commit"
+    sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory .
+    sudo -H -u builder env "PATH=${PATH}" git init
+    sudo -H -u builder env "PATH=${PATH}" git add .
+    sudo -H -u builder env "PATH=${PATH}" git commit -m "Initial commit"
 fi
 
 function recursive_build () {
