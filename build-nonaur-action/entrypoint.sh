@@ -59,7 +59,7 @@ function create_git_repository() {
     sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory .
     sudo -H -u builder env "PATH=${PATH}" git init
     sudo -H -u builder env "PATH=${PATH}" git add .
-    sudo -H -u builder env "PATH=${PATH}" git commit -m "create git repository
+    sudo -H -u builder env "PATH=${PATH}" git commit -m 'create git repository'
 }
 
 function recursive_build () {
