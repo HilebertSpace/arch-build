@@ -31,6 +31,7 @@ build() {
   export GOENV='off'
   BUILD_DATE="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)"
   go build -ldflags "-compressdwarf=false -linkmode=external" -o build ./cmd/...
+  "build/${pkgname}" version
   "build/${pkgname}" completion bash > completions/bash
   "build/${pkgname}" completion zsh > completions/zsh
   "build/${pkgname}" completion fish > completions/fish
