@@ -102,7 +102,7 @@ fi
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory "${PWD}"
+sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory '*'
 sudo -H -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
