@@ -8,8 +8,6 @@ sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
-[multilib]
-Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/\$arch
 [chaotic-aur]
