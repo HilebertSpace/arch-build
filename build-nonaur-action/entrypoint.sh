@@ -26,7 +26,7 @@ useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Work around
-sudo -u builder env "PATH=${PATH}" git config --global safe.directory '*'
+# sudo -u builder env "PATH=${PATH}" git config --global safe.directory '*'
 
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
@@ -54,6 +54,13 @@ set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
 # Just generate .SRCINFO
 if ! [ -f .SRCINFO ]; then
     sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+fi
+
+# Create a new git repository if not already one
+if [ ! -d .git ]; then
+    sudo -H -u builder git init
+    sudo -H -u builder git add .
+    sudo -H -u builder git commit -m "Initial commit"
 fi
 
 function recursive_build () {
@@ -90,8 +97,6 @@ if [ -n "${INPUT_AURDEPS:-}" ]; then
 
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${PKGDEPS[@]}"
 fi
-
-ls -al .
 
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
