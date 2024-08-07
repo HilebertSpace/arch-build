@@ -54,7 +54,6 @@ if ! [ -f .SRCINFO ]; then
 fi
 
 function create_git_repository() {
-    function create_git_repository() {
     [ -d .git ] && return
 
     local git_commands=(
@@ -68,7 +67,6 @@ function create_git_repository() {
     for cmd in "${git_commands[@]}"; do
         sudo -H -u builder env "PATH=${PATH}" git ${cmd}
     done
-}
 }
 
 function recursive_build () {
