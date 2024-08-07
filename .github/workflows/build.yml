@@ -11,6 +11,7 @@ jobs:
       matrix:
         repos:
           - adduser-deb
+          - backblaze-b2
           - carapace
           - davmail
           - doggo
@@ -26,10 +27,12 @@ jobs:
           - networkd-notify-git
           - pacman-hook-kernel-install
           - pacman-log-orphans-hook
+          - pgadmin4-desktop
           - proto
           - remove-orphaned-kernels
           - swt
           - tlrc
+          - ttf-resource-han-rounded
           - wechat-universal-bwrap
           - yabsnap
         include:

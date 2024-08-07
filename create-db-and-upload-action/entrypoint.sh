@@ -9,7 +9,6 @@ if [ ! -f ~/.config/rclone/rclone.conf ]; then
     mkdir --parents ~/.config/rclone
     echo "[onedrive]" >> ~/.config/rclone/rclone.conf
     echo "type = onedrive" >> ~/.config/rclone/rclone.conf
-
     echo "client_id=${RCLONE_ONEDRIVE_CLIENT_ID}" >> ~/.config/rclone/rclone.conf
     echo "client_secret=${RCLONE_ONEDRIVE_CLIENT_SECRET}" >> ~/.config/rclone/rclone.conf
     echo "auth_url=${RCLONE_ONEDRIVE_AUTH_URL}" >> ~/.config/rclone/rclone.conf
@@ -39,4 +38,4 @@ if [ ! -z "${gpg_key}" ]; then
     done
     repo-add --verify --sign "./${repo_name:?}.db.tar.gz" ./*.tar.zst
 fi
-rclone copy ./ "onedrive:${dest_path:?}" --copy-links -v
+rclone copy --checksum  --copy-links ./ "onedrive:${dest_path:?}"

@@ -8,8 +8,6 @@ sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
-[multilib]
-Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/\$arch
 [chaotic-aur]
@@ -52,8 +50,19 @@ set_path /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl
 
 # Just generate .SRCINFO
 if ! [ -f .SRCINFO ]; then
-    sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+    sudo -H -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
 fi
+
+function create_git_repository() {
+    [ -d .git ] && return
+    sudo -H -u builder env "PATH=${PATH}" git config --global init.defaultBranch main
+    sudo -H -u builder env "PATH=${PATH}" git config --global user.email buildere@users.noreply.builder.com
+    sudo -H -u builder env "PATH=${PATH}" git config --global user.name builder
+    sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory "${PWD}"
+    sudo -H -u builder env "PATH=${PATH}" git init
+    sudo -H -u builder env "PATH=${PATH}" git add .
+    sudo -H -u builder env "PATH=${PATH}" git commit -m 'create git repository'
+}
 
 function recursive_build () {
     for d in *; do
@@ -62,11 +71,11 @@ function recursive_build () {
         fi
     done
 
-    sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
+    sudo -H -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${OTHERPKGDEPS[@]}"
-
+    create_git_repository
     sudo -H -u builder env "PATH=${PATH}" makepkg --install --noconfirm
     [ -d "${BASEDIR}/local/" ] || mkdir "${BASEDIR}/local/"
     cp ./*.pkg.tar.zst "${BASEDIR}/local/"
@@ -93,10 +102,11 @@ fi
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u builder env "PATH=${PATH}" makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
+create_git_repository
+sudo -H -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
-mapfile -t PKGFILES < <( sudo -u builder env "PATH=${PATH}" makepkg --packagelist )
+mapfile -t PKGFILES < <( sudo -H -u builder env "PATH=${PATH}" makepkg --packagelist )
 echo "Package(s): ${PKGFILES[*]}"
 
 # Report built package archives
