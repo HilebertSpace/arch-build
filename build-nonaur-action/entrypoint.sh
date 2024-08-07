@@ -65,7 +65,7 @@ function create_git_repository() {
     )
 
     for cmd in "${git_commands[@]}"; do
-        sudo -H -u builder env "PATH=${PATH}" git "${cmd}"
+        sudo -H -u builder env "PATH=${PATH}" git ${cmd}
     done
 }
 
