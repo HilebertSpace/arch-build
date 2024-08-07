@@ -20,6 +20,7 @@ jobs:
           - fcitx5-pinyin-sougou
           - fselect
           - ion-git
+          - kmplayer
           - kopia
           - linux-zen-versioned-bin
           - linuxqq-nt-bwrap
