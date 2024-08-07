@@ -69,6 +69,7 @@ def rclone_download(name: str, dest_path: str = "./"):
         [
             "rclone",
             "copy",
+            "--checksum",
             f"onedrive:/{ROOT_PATH}/{name}",
             dest_path,
         ],
