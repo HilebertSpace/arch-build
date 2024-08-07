@@ -18,6 +18,8 @@ Server = https://repo.archlinuxcn.org/\$arch
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
+cat /etc/pacman.conf
+
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
 
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then

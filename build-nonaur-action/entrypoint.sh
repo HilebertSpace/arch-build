@@ -25,7 +25,7 @@ useradd builder -m
 # Give user `builder` passwordless sudo access
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-sudo -u builder env "PATH=${PATH}" git config --global safe.directory '*'
+sudo -u builder env "PATH=${PATH}" git config --global safe.directory .
 
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
