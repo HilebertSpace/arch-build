@@ -54,14 +54,21 @@ if ! [ -f .SRCINFO ]; then
 fi
 
 function create_git_repository() {
-    if [ ! -d .git ]; then
-        sudo -H -u builder env "PATH=${PATH}" git config --global init.defaultBranch main
-        sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory "${PWD}"
-        sudo -H -u builder env "PATH=${PATH}" git config --global -l
-        sudo -H -u builder env "PATH=${PATH}" git init
-        sudo -H -u builder env "PATH=${PATH}" git add .
-        sudo -H -u builder env "PATH=${PATH}" git commit -m "create git repository"
-    fi
+    function create_git_repository() {
+    [ -d .git ] && return
+
+    local git_commands=(
+        'config --global init.defaultBranch main'
+        "config --global --add safe.directory ${PWD}"
+        'init'
+        'add .'
+        'commit -m create git repository'
+    )
+
+    for cmd in "${git_commands[@]}"; do
+        sudo -H -u builder env "PATH=${PATH}" git "${cmd}"
+    done
+}
 }
 
 function recursive_build () {
