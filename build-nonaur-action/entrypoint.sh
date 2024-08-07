@@ -25,9 +25,6 @@ useradd builder -m
 # Give user `builder` passwordless sudo access
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-# Work around
-# sudo -u builder env "PATH=${PATH}" git config --global safe.directory '*'
-
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
 
@@ -56,13 +53,14 @@ if ! [ -f .SRCINFO ]; then
     sudo -u builder env "PATH=${PATH}" makepkg --printsrcinfo > .SRCINFO
 fi
 
-# Create a new git repository if not already one
-if [ ! -d .git ]; then
-    sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory .
-    sudo -H -u builder env "PATH=${PATH}" git init
-    sudo -H -u builder env "PATH=${PATH}" git add .
-    sudo -H -u builder env "PATH=${PATH}" git commit -m "Initial commit"
-fi
+function create_git_repository() {
+    if [ ! -d .git ]; then
+        sudo -H -u builder env "PATH=${PATH}" git config --global --add safe.directory .
+        sudo -H -u builder env "PATH=${PATH}" git init
+        sudo -H -u builder env "PATH=${PATH}" git add .
+        sudo -H -u builder env "PATH=${PATH}" git commit -m "create git repository"
+    fi
+}
 
 function recursive_build () {
     for d in *; do
@@ -75,7 +73,7 @@ function recursive_build () {
     mapfile -t OTHERPKGDEPS < \
         <(sed -n -e 's/^[[:space:]]*\(make\)\?depends\(_x86_64\)\? = \([[:alnum:][:punct:]]*\)[[:space:]]*$/\3/p' .SRCINFO)
     sudo -H -u builder env "PATH=${PATH}" paru -Syu --noconfirm --needed --clonedir="${BASEDIR}" "${OTHERPKGDEPS[@]}"
-
+    create_git_repository
     sudo -H -u builder env "PATH=${PATH}" makepkg --install --noconfirm
     [ -d "${BASEDIR}/local/" ] || mkdir "${BASEDIR}/local/"
     cp ./*.pkg.tar.zst "${BASEDIR}/local/"
@@ -102,6 +100,7 @@ fi
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
+create_git_repository
 sudo -H -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
 
 # Get array of packages to be built
