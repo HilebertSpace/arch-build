@@ -30,6 +30,7 @@ jobs:
           - pgadmin4-desktop
           - proto
           - remove-orphaned-kernels
+          - scilab
           - swt
           - tlrc
           - ttf-resource-han-rounded
