@@ -8,17 +8,17 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
 
 # Enable the cloudflare mirror
-sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
+# sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 
 # Enable the multilib, archlinuxcn and chaotic aur repository
-cat << EOM >> /etc/pacman.conf
-[archlinuxcn]
-Server = https://repo.archlinuxcn.org/\$arch
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
-[arch4edu]
-Server = https://repository.arch4edu.org/\$arch
-EOM
+# cat << EOM >> /etc/pacman.conf
+# [archlinuxcn]
+# Server = https://repo.archlinuxcn.org/\$arch
+# [chaotic-aur]
+# Include = /etc/pacman.d/chaotic-mirrorlist
+# [arch4edu]
+# Server = https://repository.arch4edu.org/\$arch
+# EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed arch4edu-keyring && pacman -Syu --noconfirm --needed paru
 
