@@ -12,9 +12,11 @@ cat << EOM >> /etc/pacman.conf
 Server = https://repo.archlinuxcn.org/\$arch
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
+[arch4edu]
+Server = https://repository.arch4edu.org/$arch
 EOM
 
-pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
+pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed arch4edu-keyring && pacman -Syu --noconfirm --needed paru
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
