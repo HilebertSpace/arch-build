@@ -3,6 +3,7 @@
 import os
 import subprocess
 import sys
+import stat
 import glob
 
 def run_command(command, check=True, env=None):
@@ -68,7 +69,7 @@ def install_package_with_paru(pkgname, aur_only):
 def main(pkgname, preinstall_pkgs=None, aur_only=False):
     create_user('builder')
     grant_sudo_privileges('builder')
-    change_permissions_recursively('.', os.stat.S_IRUSR | os.stat.S_IWUSR | os.stat.S_IRGRP | os.stat.S_IWGRP | os.stat.S_IROTH | os.stat.S_IWOTH)
+    change_permissions_recursively('.', stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH | stat.S_IWOTH)
 
     enable_repositories()
     install_required_packages(['archlinuxcn-keyring', 'arch4edu-keyring', 'paru'])
