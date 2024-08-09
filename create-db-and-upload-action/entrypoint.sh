@@ -2,11 +2,11 @@
 set -euo pipefail
 
 init_path="${PWD}"
-mkdir upload_packages
+mkdir -p upload_packages
 cp ${local_path}/*/*/*.tar.zst ./upload_packages/
 
 if [ ! -f ~/.config/rclone/rclone.conf ]; then
-    mkdir --parents ~/.config/rclone
+    mkdir -p ~/.config/rclone
     echo "[onedrive]" >> ~/.config/rclone/rclone.conf
     echo "type = onedrive" >> ~/.config/rclone/rclone.conf
     echo "client_id=${RCLONE_ONEDRIVE_CLIENT_ID}" >> ~/.config/rclone/rclone.conf
@@ -32,7 +32,7 @@ rm "./${repo_name:?}.files.tar.gz"
 
 if [ ! -z "${gpg_key}" ]; then
     packages=( "*.tar.zst" )
-    for name in ${packages}
+    for name in $packages
     do
         gpg --detach-sig --yes "${name}"
     done
