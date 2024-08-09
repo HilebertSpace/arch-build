@@ -22,7 +22,7 @@ pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm 
 useradd builder -m
 # When installing dependencies, makepkg will use sudo
 # Give user `builder` passwordless sudo access
-echo 'builder ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
@@ -115,7 +115,7 @@ for PKGFILE in "${PKGFILES[@]}"; do
     RELPKGFILE="$(realpath --relative-base="${BASEDIR}" "${PKGFILE}")"
     # Caller arguments to makepkg may mean the pacakge is not built
     if [ -f "${PKGFILE}" ]; then
-        echo "pkgfile$i=${RELPKGFILE}" >> $GITHUB_OUTPUT
+        echo "pkgfile$i=${RELPKGFILE}" >> ${GITHUB_OUTPUT}
     else
         echo "Archive ${RELPKGFILE} not built"
     fi
