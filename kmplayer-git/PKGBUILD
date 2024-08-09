@@ -44,22 +44,19 @@ source=("git+https://invent.kde.org/multimedia/${_pkgname}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    export QT_SELECT='5'
-    cmake -B build -S "${_pkgname}" -DCMAKE_BUILD_TYPE='None' -Wno-dev
+    cmake -B build -S "${_pkgname}"
     cmake --build build
 }
 
 check() {
-    export QT_SELECT='5'
     ctest --test-dir build --output-on-failure
 }
 
 package() {
-    export QT_SELECT='5'
     DESTDIR="${pkgdir}" cmake --install build
 }

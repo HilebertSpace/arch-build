@@ -28,7 +28,7 @@ sha512sums=('d522b269ae9b57ec610f71f0e0aec30cafeec615627fb401fab4be09a2651c10ca1
 
 build() {
     export QT_SELECT='5'
-    cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_BUILD_TYPE='None' -Wno-dev
+    cmake -B build -S "${pkgname}-${pkgver}"
     cmake --build build
 }
 
