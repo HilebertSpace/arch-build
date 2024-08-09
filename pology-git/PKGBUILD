@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL-3.0-or-later')
 url="https://invent.kde.org/sdk/${_pkgname}"
 depends=('python' 'gettext')
-makedepends=('cmake' 'docbook-xsl' 'git' 'libxml2' 'libxslt' 'python-setuptools' 'python-pygments')
+makedepends=('cmake' 'docbook-xsl' 'epydoc' 'git' 'libxml2' 'libxslt' 'python-setuptools' 'python-pygments')
 checkdepends=('python-pytest')
 optdepends=(
     'python-dbus: to communicate with external applications'
