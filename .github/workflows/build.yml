@@ -23,8 +23,11 @@ jobs:
           - ion-git
           - kamule
           - keurocalc
+          - kgeotag
           - ktechlab
           - kopia
+          - kuickshow
+          - kxstitch
           - linux-versioned-bin
           - linuxqq-nt-bwrap
           - networkd-broker
@@ -36,6 +39,7 @@ jobs:
           - ruqola
           - semantik
           - swt
+          - symboleditor
           - tlrc
           - ttf-resource-han-rounded
           - wechat-universal-bwrap
