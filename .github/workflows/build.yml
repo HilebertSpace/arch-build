@@ -23,7 +23,6 @@ jobs:
           - ion-git
           - kamule
           - keurocalc
-          - kgeotag
           - ktechlab
           - kopia
           - kuickshow
@@ -78,6 +77,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
+          - kgeotag
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
