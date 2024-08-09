@@ -3,12 +3,9 @@ set -euo pipefail
 
 pkgname=$1
 
-# useradd builder -m
-# echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+useradd builder -m
+echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
-
-# Enable the cloudflare mirror
-# sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 
 # Enable the multilib, archlinuxcn and chaotic aur repository
 cat << EOM >> /etc/pacman.conf
