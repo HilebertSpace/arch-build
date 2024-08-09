@@ -23,9 +23,7 @@ source=("https://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.xz"
 sha512sums=('3c6188780b11743abd465c9cb7eadce94e638d292fe77e674068c2c123dbb614d1d46ba984a20b30a03e3e8b0ac941f6ec169cc52b4c2c83d14649c3d047156f')
 
 build() {
-    cmake -B build -S "${pkgname}-${pkgver}" \
-        -DCMAKE_INSTALL_PREFIX="$(/usr/bin/qtpaths --install-prefix)" \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS='ON'
+    cmake -B build -S "${pkgname}-${pkgver}" -DKDE_INSTALL_USE_QT_SYS_PATHS='ON'
     cmake --build build
 }
 
