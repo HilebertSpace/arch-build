@@ -6,7 +6,7 @@ pkgver='0.13.r5681.4ed65229'
 pkgrel='1'
 pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url="https://invent.kde.org/sdk/${_pkgname}"
 depends=('python' 'gettext')
 makedepends=('cmake' 'docbook-xsl' 'git' 'libxml2' 'libxslt' 'python-setuptools' 'python-pygments')
@@ -28,7 +28,10 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "${_pkgname}" -DCMAKE_INSTALL_PREFIX='/usr'
+    cd "${_pkgname}"
+    mkdir build && cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
 }
 
 check() {
@@ -37,7 +40,8 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  cd "${_pkgname}/build"
+  make DESTDIR="${pkgdir}" install
   install -d "${pkgdir}/usr/share/apps/katepart/syntax"
   ln -s "${pkgdir}/usr/share/pology/syntax/kate/synder.xml" "${pkgdir}/usr/share/apps/katepart/syntax/synder.xml"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
