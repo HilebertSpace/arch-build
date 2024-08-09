@@ -9,17 +9,17 @@ arch=('any')
 license=('GPL3')
 url="https://invent.kde.org/sdk/${_pkgname}"
 depends=('python' 'gettext')
-makedepends=('git' 'cmake' 'libxml2' 'docbook-xsl' 'libxslt' 'python-setuptools' 'python-pygments')
+makedepends=('cmake' 'docbook-xsl' 'git' 'libxml2' 'libxslt' 'python-setuptools' 'python-pygments')
 checkdepends=('python-pytest')
-options=(!makeflags)
-optdepends=('python-dbus: to communicate with external applications'
-	    'python-pyenchant: for spell checking functionality'
-	    'languagetool: used by the check-grammar sieve'
-	    'apertium: used by the pomtrans script'
-	    'git: for processing files under version control'
-	    'subversion: for processing files under version control')
+optdepends=(
+    'python-dbus: to communicate with external applications'
+	'python-pyenchant: for spell checking functionality'
+	'languagetool: used by the check-grammar sieve'
+	'apertium: used by the pomtrans script'
+	'git: for processing files under version control'
+	'subversion: for processing files under version control')
 provides=('pology')
-source=("git+${ur}.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
