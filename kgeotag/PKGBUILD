@@ -28,11 +28,7 @@ sha512sums=('d522b269ae9b57ec610f71f0e0aec30cafeec615627fb401fab4be09a2651c10ca1
 
 build() {
     export QT_SELECT='5'
-    cmake -B build -S "${pkgname}-${pkgver}" \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS='TRUE' \
-        -DFETCHCONTENT_FULLY_DISCONNECTED='ON' \
-        -Wno-dev
+    cmake -B build -S "${pkgname}-${pkgver}" -Wno-dev
     cmake --build build
 }
 
