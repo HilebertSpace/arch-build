@@ -40,8 +40,6 @@ jobs:
           - wechat-universal-bwrap
           - yabsnap
         include:
-          - repos: fselect
-            preinstall-pkgs: "cmake"
           - repos: kopia
             aur-only: "true"
       fail-fast: false
