@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-FILE="$(basename "$0")"
+FILE=$(basename $0)
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
@@ -22,7 +22,7 @@ pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm 
 useradd builder -m
 # When installing dependencies, makepkg will use sudo
 # Give user `builder` passwordless sudo access
-echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+echo 'builder ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
