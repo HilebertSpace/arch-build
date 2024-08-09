@@ -14,7 +14,7 @@ depends=(
     'kiconthemes'
     'kio-extras'
     'kirigami2'
-    'knewstuff'
+    'knewstuff5'
     'plasma-framework5'
     'qt5-graphicaleffects')
 makedepends=('extra-cmake-modules' 'kdoctools')
