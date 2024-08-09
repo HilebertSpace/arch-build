@@ -78,7 +78,6 @@ jobs:
         PKGBUILDs:
           - aqua
           - kgeotag
-          - kmplayer-git
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
