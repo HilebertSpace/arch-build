@@ -3,8 +3,7 @@
 import os
 import subprocess
 import sys
-from glob import glob
-from base64 import urlsafe_b64encode, urlsafe_b64decode
+import glob
 
 def run_command(command, check=True, env=None):
     result = subprocess.run(command, shell=True, check=check, env=env)
@@ -21,7 +20,7 @@ def set_path(*paths):
             os.environ['PATH'] = os.environ['PATH'] + os.pathsep + path
 
 def encode_names():
-    names = glob("./*.tar.zst")
+    names = glob.glob("./*.tar.zst")
     for name in names:
         new_name = name.removesuffix(".tar.zst").replace(":", "-colon-")
         os.rename(name, new_name + ".tar.zst")
@@ -69,7 +68,7 @@ def install_package_with_paru(pkgname, aur_only):
 def main(pkgname, preinstall_pkgs=None, aur_only=False):
     create_user('builder')
     grant_sudo_privileges('builder')
-    change_permissions_recursively('.', stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH | stat.S_IWOTH)
+    change_permissions_recursively('.', os.stat.S_IRUSR | os.stat.S_IWUSR | os.stat.S_IRGRP | os.stat.S_IWGRP | os.stat.S_IROTH | os.stat.S_IWOTH)
 
     enable_repositories()
     install_required_packages(['archlinuxcn-keyring', 'arch4edu-keyring', 'paru'])
