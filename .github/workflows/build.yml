@@ -13,6 +13,7 @@ jobs:
           - adduser-deb
           - backblaze-b2
           - carapace
+          - choqok-git
           - davmail
           - doggo
           - fcitx5-pinyin-custom-pinyin-dictionary
@@ -32,6 +33,7 @@ jobs:
           - pacman-log-orphans-hook
           - proto
           - remove-orphaned-kernels
+          - ruqola
           - semantik
           - swt
           - tlrc
