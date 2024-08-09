@@ -11,6 +11,7 @@ license=('LGPL-2.1-or-later')
 depends=(
     'baloo'
     'kconfig'
+    'kfilemetadata5'
     'kiconthemes'
     'kio-extras'
     'kirigami2'
