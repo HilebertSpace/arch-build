@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   export QT_SELECT='5'
-    cmake -B build -S "${pkgname}-${pkgver}" \
+    cmake -B build -S "${_pkgname}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DKDE_INSTALL_USE_QT_SYS_PATHS='TRUE' \
         -DFETCHCONTENT_FULLY_DISCONNECTED='ON' \
