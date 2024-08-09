@@ -19,7 +19,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
-sudo -H -u builder env "PATH=${PATH}" gpg --recv-keys A53563BC888E6CE5215535992523842AF9681DDF && sudo -H -u builder env "PATH=${PATH}" gpg --lsign A53563BC888E6CE5215535992523842AF9681DDF
+sudo -H -u builder env "PATH=${PATH}" gpg --batch --recv-keys A53563BC888E6CE5215535992523842AF9681DDF && sudo -H -u builder env "PATH=${PATH}" gpg --batch --lsign A53563BC888E6CE5215535992523842AF9681DDF
 
 if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
     pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
