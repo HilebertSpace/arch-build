@@ -13,6 +13,7 @@ jobs:
           - adduser-deb
           - backblaze-b2
           - carapace
+          - choqok-git
           - davmail
           - doggo
           - fcitx5-pinyin-custom-pinyin-dictionary
@@ -20,24 +21,29 @@ jobs:
           - fcitx5-pinyin-sougou
           - fselect
           - ion-git
+          - kamule
+          - keurocalc
+          - ktechlab
           - kopia
+          - kuickshow
+          - kxstitch
           - linux-versioned-bin
           - linuxqq-nt-bwrap
           - networkd-broker
           - networkd-notify-git
           - pacman-hook-kernel-install
           - pacman-log-orphans-hook
-          - pgadmin4-desktop
           - proto
           - remove-orphaned-kernels
+          - ruqola
+          - semantik
           - swt
+          - symboleditor
           - tlrc
           - ttf-resource-han-rounded
           - wechat-universal-bwrap
           - yabsnap
         include:
-          - repos: fselect
-            preinstall-pkgs: "cmake"
           - repos: kopia
             aur-only: "true"
       fail-fast: false
@@ -71,6 +77,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
+          - kgeotag
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock

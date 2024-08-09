@@ -1,10 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-FILE="$(basename "$0")"
-
-# Enable the cloudflare mirror
-sed -i '1i Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
+FILE="$(basename $0)"
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
@@ -12,9 +9,11 @@ cat << EOM >> /etc/pacman.conf
 Server = https://repo.archlinuxcn.org/\$arch
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
+[arch4edu]
+Server = https://repository.arch4edu.org/\$arch
 EOM
 
-pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
+pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed arch4edu-keyring && pacman -Syu --noconfirm --needed paru
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
@@ -103,7 +102,7 @@ fi
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
 create_git_repository
-sudo -H -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
+sudo -H -u builder makepkg --syncdeps --noconfirm "${INPUT_MAKEPKGARGS:-}"
 
 # Get array of packages to be built
 mapfile -t PKGFILES < <( sudo -H -u builder env "PATH=${PATH}" makepkg --packagelist )
@@ -116,7 +115,7 @@ for PKGFILE in "${PKGFILES[@]}"; do
     RELPKGFILE="$(realpath --relative-base="${BASEDIR}" "${PKGFILE}")"
     # Caller arguments to makepkg may mean the pacakge is not built
     if [ -f "${PKGFILE}" ]; then
-        echo "pkgfile$i=${RELPKGFILE}" >> $GITHUB_OUTPUT
+        echo "pkgfile$i=${RELPKGFILE}" >> ${GITHUB_OUTPUT}
     else
         echo "Archive ${RELPKGFILE} not built"
     fi

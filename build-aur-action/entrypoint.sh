@@ -20,8 +20,8 @@ EOM
 
 pacman -Syu --noconfirm --needed archlinuxcn-keyring && pacman -Syu --noconfirm --needed paru
 
-if [ ! -z "$INPUT_PREINSTALLPKGS" ]; then
-    pacman -Syu --noconfirm --needed ${INPUT_PREINSTALLPKGS}
+if [ ! -z "${INPUT_PREINSTALLPKGS}" ]; then
+    pacman -Syu --noconfirm --needed "${INPUT_PREINSTALLPKGS}"
 fi
 
 function set_path(){
