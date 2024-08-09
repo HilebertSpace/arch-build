@@ -73,6 +73,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
+          - peruse
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
