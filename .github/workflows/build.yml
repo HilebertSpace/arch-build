@@ -21,6 +21,7 @@ jobs:
           - fselect
           - ion-git
           - keurocalc
+          - ktechlab
           - kopia
           - linux-versioned-bin
           - linuxqq-nt-bwrap
