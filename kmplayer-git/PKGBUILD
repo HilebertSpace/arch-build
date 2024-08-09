@@ -4,7 +4,7 @@
 
 _pkgname='kmplayer'
 pkgname='kmplayer-git'
-pkgver='r2839.0703e60-1'
+pkgver='r2839.0703e60'
 pkgrel='1'
 pkgdesc="Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend for KDE"
 arch=('x86_64')
@@ -43,7 +43,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
