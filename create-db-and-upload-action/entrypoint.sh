@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 init_path="${PWD}"
 mkdir upload_packages

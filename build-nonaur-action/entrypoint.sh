@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-FILE=$(basename $0)
+FILE="$(basename $0)"
 
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
@@ -102,7 +102,7 @@ fi
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
 create_git_repository
-sudo -H -u builder makepkg --syncdeps --noconfirm ${INPUT_MAKEPKGARGS:-}
+sudo -H -u builder makepkg --syncdeps --noconfirm "${INPUT_MAKEPKGARGS:-}"
 
 # Get array of packages to be built
 mapfile -t PKGFILES < <( sudo -H -u builder env "PATH=${PATH}" makepkg --packagelist )

@@ -1,48 +1,43 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-pkgname='kgeotag'
-pkgver='1.5.0'
-pkgrel='1'
+pkgname=kgeotag
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Photo geotagging program'
 arch=('x86_64')
-url="https://${pkgname}.kde.org"
-license=('GPL-3.0-only')
+url=https://${pkgname}.kde.org
+license=(GPL-3.0-only)
 depends=(
-    'gcc-libs'
-    'glibc'
-    'hicolor-icon-theme'
-    'kconfig5'
-    'kconfigwidgets5'
-    'kcoreaddons5'
-    'kcrash5'
-    'ki18n5'
-    'kxmlgui5'
-    'libkexiv2-qt5'
-    'marble-common'
-    'qt5-base'
-    'xdg-utils'
+    gcc-libs
+    glibc
+    hicolor-icon-theme
+    kconfig5
+    kconfigwidgets5
+    kcoreaddons5
+    kcrash5
+    ki18n5
+    kxmlgui5
+    libkexiv2-qt5
+    marble-common
+    qt5-base
+    xdg-utils
 )
-makedepends=('appstream' 'extra-cmake-modules' 'kdoctools5')
-source=("https://download.kde.org/stable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('d522b269ae9b57ec610f71f0e0aec30cafeec615627fb401fab4be09a2651c10ca1f9952ad790c2b9a39eb0d97f4bb190a557271f90badf9918301456f02dba6')
+makedepends=(appstream extra-cmake-modules kdoctools5)
+source=(https://download.kde.org/stable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha512sums=(d522b269ae9b57ec610f71f0e0aec30cafeec615627fb401fab4be09a2651c10ca1f9952ad790c2b9a39eb0d97f4bb190a557271f90badf9918301456f02dba6)
 
 build() {
-    export QT_SELECT='5'
-    cmake -B build -S "${pkgname}-${pkgver}" \
-        -DBUILD_SHARED_LIBS='ON' \
-        -DBUILD_TESTING='ON' \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS='TRUE' \
-        -Wno-dev
+    export QT_SELECT=5
+    cmake -B build -S ${pkgname}-${pkgver} -DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=None -DKDE_INSTALL_USE_QT_SYS_PATHS=TRUE -Wno-dev
     cmake --build build
 }
 
 check() {
-    export QT_SELECT='5'
+    export QT_SELECT=5
     ctest --test-dir build --output-on-failure
 }
 
 package() {
-    export QT_SELECT='5'
+    export QT_SELECT=5
     DESTDIR="${pkgdir}" cmake --install build
 }

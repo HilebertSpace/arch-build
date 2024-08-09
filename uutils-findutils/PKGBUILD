@@ -1,41 +1,41 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_pkgname='findutils'
-pkgname="uutils-${_pkgname}"
-pkgver='0.6.0'
-pkgrel='1'
+_pkgname=findutils
+pkgname=uutils-${_pkgname}
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Rust implementation of findutils"
-arch=('x86_64')
-url='https://uutils.github.io'
-license=('MIT')
-depends=('gcc-libs' 'glibc')
-makedepends=('rust')
-options=('!lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate")
-sha512sums=('3a967c4f8100effa355dd23f52531204ae0a16a2fdd535b5d6d61906a334875fb7eb22b900c4f9e6b78651f0a102073a1a315ec04a079e41e0ef6ca09ef7c7cb')
+arch=(x86_64)
+url=https://uutils.github.io
+license=(MIT)
+depends=(gcc-libs glibc)
+makedepends=(rust)
+options=(!lto)
+source=(${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate)
+sha512sums=(3a967c4f8100effa355dd23f52531204ae0a16a2fdd535b5d6d61906a334875fb7eb22b900c4f9e6b78651f0a102073a1a315ec04a079e41e0ef6ca09ef7c7cb)
 
 prepare() {
-    cd "${_pkgname}-${pkgver}"
-    export RUSTUP_TOOLCHAIN='stable'
+    cd ${_pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    export RUSTUP_TOOLCHAIN='stable'
-    export CARGO_TARGET_DIR='target'
+    cd ${_pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "${_pkgname}-${pkgver}"
-    export RUSTUP_TOOLCHAIN='stable'
+    cd ${_pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    install -Dm 0755 'target/release/find' "${pkgdir}/usr/bin/uu-find"
-    install -Dm 0755 'target/release/xargs' "${pkgdir}/usr/bin/uu-xargs"
+    cd ${_pkgname}-${pkgver}
+    install -Dm 0755 target/release/find "${pkgdir}/usr/bin/uu-find"
+    install -Dm 0755 target/release/xargs "${pkgdir}/usr/bin/uu-xargs"
     install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
