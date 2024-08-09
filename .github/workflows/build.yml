@@ -23,6 +23,7 @@ jobs:
           - ion-git
           - kamule
           - keurocalc
+          - kmplayer
           - ktechlab
           - kopia
           - kuickshow
