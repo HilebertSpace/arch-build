@@ -30,7 +30,6 @@ jobs:
           - pacman-hook-kernel-install
           - pacman-log-orphans-hook
           - pgadmin4-desktop
-          - pology-git
           - proto
           - remove-orphaned-kernels
           - semantik
@@ -73,6 +72,7 @@ jobs:
       matrix:
         PKGBUILDs:
           - aqua
+          - pology-git
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
