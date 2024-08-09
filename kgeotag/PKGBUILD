@@ -22,7 +22,7 @@ depends=(
     'qt5-base'
     'xdg-utils'
 )
-makedepends=('appstream' 'extra-cmake-modules' 'kdoctools5' 'qt5-tools')
+makedepends=('appstream' 'extra-cmake-modules' 'kdoctools5')
 source=("https://download.kde.org/stable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha512sums=('d522b269ae9b57ec610f71f0e0aec30cafeec615627fb401fab4be09a2651c10ca1f9952ad790c2b9a39eb0d97f4bb190a557271f90badf9918301456f02dba6')
 

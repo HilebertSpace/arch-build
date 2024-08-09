@@ -1,0 +1,42 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: damir <damir@archlinux.org>
+
+_pkgname='kmplayer'
+pkgname='kmplayer-git'
+pkgver='0.12.0.b'
+pkgrel='1'
+pkgdesc="Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend for KDE"
+arch=('x86_64')
+license=(GPL LGPL FDL)
+url="https://${_pkgname}.kde.org"
+depends=('hicolor-icon-theme' 'kdelibs4support' 'kmediaplayer' 'phonon-qt5')
+makedepends=('extra-cmake-modules' 'kdesignerplugin' 'kdoctools' 'kinit')
+optdepends=('mplayer: mplayer backend')
+source=("git+https://invent.kde.org/multimedia/${_pkgname}")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+  export QT_SELECT='5'
+    cmake -B build -S "${pkgname}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DKDE_INSTALL_USE_QT_SYS_PATHS='TRUE' \
+        -DFETCHCONTENT_FULLY_DISCONNECTED='ON' \
+        -Wno-dev
+    cmake --build build
+}
+
+check() {
+    export QT_SELECT='5'
+    ctest --test-dir build --output-on-failure
+}
+
+package() {
+    export QT_SELECT='5'
+    DESTDIR="${pkgdir}" cmake --install build
+}

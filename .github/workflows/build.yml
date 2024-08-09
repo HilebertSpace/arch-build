@@ -23,7 +23,6 @@ jobs:
           - ion-git
           - kamule
           - keurocalc
-          - kmplayer
           - ktechlab
           - kopia
           - kuickshow
@@ -79,6 +78,7 @@ jobs:
         PKGBUILDs:
           - aqua
           - kgeotag
+          - kmplayer-git
           - uutils-diffutils
           - uutils-findutils
           - yt-dlp-plugin-chromecookieunlock
